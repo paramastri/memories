@@ -4,14 +4,13 @@ namespace Phalcon\Init\Dashboard\Models;
 
 use Phalcon\Mvc\Model;
 
-class Psikolog extends Model
+class Studio extends Model
 {
     public $id;
     public $nama;
-    public $username;
-    public $email;
-    public $password;
-    public $telepon;
-    public $str;
+    public $kapasitas;
+    public $deskripsi;
+    public $harga;
     public $status;
+    public $image;
 }
