@@ -26,10 +26,15 @@ class IndexController extends Controller
     {
         $_isAdmin = $this->session->get('admin');
         if ($_isAdmin) {
-            $this->response->redirect('halamanadmin');
+            $this->response->redirect('listreservasi');
         }
         
         $this->view->pick('home');
+    }
+
+    public function katalogAction()
+    {
+        $this->view->pick('katalog');
     }
 
 

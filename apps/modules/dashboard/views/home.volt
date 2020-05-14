@@ -47,7 +47,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-2">
                             <div class="logo">
-                                <a href="index.html"><img style="width: 30%;" src="assets/img/logo/logogo.png" alt=""></a>
+                                <a href="/"><img style="width: 30%;" src="assets/img/logo/logogo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -55,11 +55,11 @@
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">    
-                                        <li class="active"><a style="color: #6A5E5E" href="index.html"> Home</a></li>
-                                        <li><a style="color: #6A5E5E" href="#">Katalog</a></li>
-                                        <li><a style="color: #6A5E5E" href="#">Daftar</a></li>
-                                        <li><a style="color: #6A5E5E" href="#">Masuk</a></li>
-                                        <li><a style="color: #6A5E5E" href="contact.html">Admin</a></li>
+                                        <li class="active"><a style="color: #6A5E5E" href="/"> Home</a></li>
+                                        <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
+                                        <li><a style="color: #6A5E5E" href="register">Daftar</a></li>
+                                        <li><a style="color: #6A5E5E" href="login">Masuk</a></li>
+                                        <li><a style="color: #6A5E5E" href="loginadmin">Admin</a></li>
                                     </ul>
                                 </nav>
                             </div>
