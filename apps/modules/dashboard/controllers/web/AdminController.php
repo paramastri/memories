@@ -218,8 +218,8 @@ class AdminController extends Controller
             return $this->response->redirect('liststudio');
         }
         else{
-            $this->flashSession->error("Gagal.");
-                $this->response->redirect('editstudio' . '/' . $id);
+            $this->flashSession->error("Gagal diupdate.");
+            $this->response->redirect('editstudio' . '/' . $id);
         }
      } 
 

@@ -108,13 +108,6 @@ $router->addPost('/tambahstudio', [
     'action' => 'storetambahstudio'
 ]);
 
-$router->addPost('/tambahstudio', [
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'admin',
-    'action' => 'storetambahstudio'
-]);
-
 $router->addGet('/editstudio/{id}',[
     'namespace' => $namespace,
     'module' => 'dashboard',

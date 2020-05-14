@@ -150,7 +150,7 @@
     <div class="container box_1170">
 						<h3 class="mb-30">Daftar Katalog Studio</h3>
 
-						<button style="margin-top: 40px; margin-bottom: 40px;" type="submit" class="genric-btn primary">Tambah</button>
+						<a style="margin-top: 40px; margin-bottom: 40px;" href="tambahstudio" class="genric-btn primary">Tambah</a>
 
             <div id="example-table-theme"></div>
 

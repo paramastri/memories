@@ -111,7 +111,7 @@
                         <div style="color: red; font-weight: bold;">
                             <p><?php echo $this->flashSession->output() ?></p>
                         </div>
-						<form action="tambahstudio" method = "post">
+						<form action="tambahstudio" method = "post" enctype="multipart/form-data">
 							<div class="mt-10">
 								<input type="text" name="nama" placeholder="Nama Studio"
 									onfocus="this.placeholder = 'Nama Studio'" onblur="this.placeholder = 'Nama Studio'" required
@@ -127,10 +127,10 @@
                                     onfocus="this.placeholder = 'Harga Studio'" onblur="this.placeholder = 'Harga Studio'" required
                                     class="single-input">
                             </div>
-
+                            <label style="margin-top: 20px; font-weight: bold;">Upload file foto</label>
                             <div class="form-group">
-                                <input type="file" class="text-center" name="file" placeholder="Deskripsi"  data-msg="Upload File" />
-                              </div>
+                                <input type="file" class="text-center" name="file" placeholder="Deskripsi"  data-msg="Upload File"/>
+                            </div>
 					 
                           <!-- <div class="mt-10">
                             <div class="input-group">
