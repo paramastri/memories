@@ -56,11 +56,17 @@
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">    
-                                        <li><a style="color: #6A5E5E" href="/"> Home</a></li>
+                                        <li><a style="color: #6A5E5E" href="/">Home</a></li>
                                         <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
-                                        <li><a style="color: #6A5E5E" href="register">Daftar</a></li>
-                                        <li class="active"><a style="color: #6A5E5E" href="login">Masuk</a></li>
-                                        <li><a style="color: #6A5E5E" href="loginadmin">Admin</a></li>
+                                        <li class="active"><a style="color: #6A5E5E" href="liststudio">Kelola Studio</a></li>
+                                        <li><a style="color: #6A5E5E" href="listreservasi">Kelola Reservasi</a></li>
+                                        {% if (session.get('admin')['username']) %}
+                                        <li><a href="#">Hai, {{ session.get('admin')['username'] }}!</a>
+                                            <ul class="submenu">
+                                                {% endif %}
+                                                <li><a href="logoutadmin">Logout</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -101,25 +107,50 @@
 				<div class="row">
 					<!-- DAFTAR -->
 					<div class="col-lg-6 col-md-6">
-						<h3 class="mb-30">Masuk Sebagai User</h3>
+						<h3 class="mb-30">Tambah Studio</h3>
                         <div style="color: red; font-weight: bold;">
                             <p><?php echo $this->flashSession->output() ?></p>
                         </div>
-						<form action="login" method = "post">
+						<form action="{{ url("storeeditstudio") }}" method = "post">
+
+                            <div class="mt-10">
+                                <input type="hidden" name="id" value="{{data.id}}">
+                            </div>
+
 							<div class="mt-10">
-								<input type="text" name="username" placeholder="Username"
-									onfocus="this.placeholder = 'Username'" onblur="this.placeholder = 'Username'" required
-									class="single-input">
-							</div>
-					
-						
-							<div class="mt-10">
-								<input type="password" name="password" placeholder="Password"
-									onfocus="this.placeholder = 'Password'" onblur="this.placeholder = 'Password'" required
+								<input type="text" name="nama" value="{{data.nama}}" placeholder="Nama Studio"
+									onfocus="this.placeholder = 'Nama Studio'" onblur="this.placeholder = 'Nama Studio'" required
 									class="single-input">
 							</div>
 
-						<button style="margin-top: 40px;" type="submit" class="genric-btn primary">Masuk</button>
+                            <div class="mt-10">
+                                <textarea name="deskripsi" class="single-textarea" placeholder="Isi deskripsi studio..." onfocus="this.placeholder = 'Isi deskripsi studio...'"
+                                    onblur="this.placeholder = 'Isi deskripsi studio...'" required>{{data.deskripsi}}</textarea>
+                            </div>
+                            <div class="mt-10">
+                                <input type="text" name="harga" value="{{data.harga}}" placeholder="Harga Studio"
+                                    onfocus="this.placeholder = 'Harga Studio'" onblur="this.placeholder = 'Harga Studio'" required
+                                    class="single-input">
+                            </div>
+<!-- 
+                            <div class="form-group">
+                                <input type="file" class="text-center" name="file" placeholder="Deskripsi"  data-msg="Upload File" />
+                              </div> -->
+					 
+                          <!-- <div class="mt-10">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupFileAddon01">Upload foto</span>
+                              </div>
+                              <div class="custom-file">
+                                <input name="file" type="file" class="custom-file-input" id="inputGroupFile01"
+                                  aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Pilih file...</label>
+                              </div>
+                            </div>
+                          </div> -->
+
+						<button style="margin-top: 40px;" type="submit" class="genric-btn primary">Tambah</button>
 						</form>
 					</div>
 
@@ -130,7 +161,7 @@
 	</div>
 	<!-- End Align Area -->
 	<div style="margin-top: 200px;">
-	  <footer>
+	 <footer>
         <!-- Footer Start-->
        <div class="footer-main">
          <div class="footer-area footer-padding2">

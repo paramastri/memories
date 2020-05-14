@@ -90,15 +90,13 @@ class AdminController extends Controller
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $uploadfile1)) {
 
             $img = $_FILES["file"]["name"];
-            $studio = new studio();
+            $studio = new Studio();
             $nama = $this->request->getPost('nama');
-            $kapasitas = $this->request->getPost('kapasitas');
             $harga = $this->request->getPost('harga');
             $deskripsi = $this->request->getPost('deskripsi');
             $status = 1;
 
             $studio->nama = $nama;
-            $studio->kapasitas = $kapasitas;
             $studio->harga =  $harga;
             $studio->deskripsi = $deskripsi;
             $studio->status = $status;
@@ -109,7 +107,7 @@ class AdminController extends Controller
             // die();
 
             $studio->save();
-            $this->response->redirect('studio');
+            $this->response->redirect('liststudio');
         }
 
     }
@@ -125,29 +123,28 @@ class AdminController extends Controller
         $this->view->pick('tambahstudio');
     }
 
-    public function listjenistudioAction()
+    public function tabelstudioAction()
     {
 
-        $listjenissurats = jenis_surat::find();
+        $listjenisstudios = studio::find();
         $data = array();
 
-        foreach ($listjenissurats as $listjenissurat)
+        foreach ($listjenisstudios as $listjenisstudio)
         {
-
-            if($listjenissurat->deleted == 0)
+            // status = 1 itu available
+            if($listjenisstudio->status == 1)
             {
-                $status = "Aktif";
+                $status_sekarang = "Tersedia";
             }
             else{
-                $status = "Tidak Aktif";
+                $status_sekarang = "Tidak Tersedia";
             }
             $data[] = array(
-                'nama_surat' => $listjenissurat->nama_surat,
-                'kode_surat' => $listjenissurat->kode_surat,
-                'status' => $status,
-                'link' => $listjenissurat->id,
-                
-                // 'verifikasi' => $verifikasi,
+                'nama' => $listjenisstudio->nama,
+                'deskripsi' => $listjenisstudio->deskripsi,
+                'harga' => $listjenisstudio->harga,
+                'status' => $status_sekarang,
+                'link' => $listjenisstudio->id,
             );
         }
 
@@ -163,9 +160,6 @@ class AdminController extends Controller
             // die();
             (new Response())->redirect('loginadmin')->send();          
         }
-        $status = 1;
-        $studio = studio::find("status = '$status'");
-        $this->view->data=$studio;
         $this->view->pick('liststudio');
     } 
 
@@ -212,12 +206,10 @@ class AdminController extends Controller
         // var_dump($studio);
         // die();
         $nama = $this->request->getPost('nama');
-        $kapasitas = $this->request->getPost('kapasitas');
         $harga = $this->request->getPost('harga');
         $deskripsi = $this->request->getPost('deskripsi');
 
         $studio->nama = $nama;
-        $studio->kapasitas = $kapasitas;
         $studio->harga =  $harga;
         $studio->deskripsi = $deskripsi;
 
@@ -227,7 +219,8 @@ class AdminController extends Controller
             return $this->response->redirect('liststudio');
         }
         else{
-            return $this->response->redirect('studio/editstudio' . '/' . $id);
+            $this->flashSession->error("Gagal.");
+                $this->response->redirect('editstudio' . '/' . $id);
         }
      } 
 

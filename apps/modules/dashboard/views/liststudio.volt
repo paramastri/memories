@@ -166,18 +166,27 @@
                       placeholder: "Tidak Ada Data",
                       columns: [
                           {title: "No", field: "no", formatter: "rownum", width: 10},
-                          {title: "Username", field: "username", headerFilter:"input"},
-                          {title: "Status Verifikasi", field: "status", headerFilter:"input"},
+                          {title: "Nama", field: "nama", headerFilter:"input"},
+                          {title: "Deskripsi", field: "deskripsi", headerFilter:"input"},
+                          {title: "Harga", field: "harga", headerFilter:"input"},
+                          {title: "Status", field: "status", headerFilter:"input"},
                           {
                               title: "Edit", field: "link", formatter: "link", formatterParams: {         
                                   labelField: "name",
                                   label: "Edit",
-                                  urlPrefix: "",
+                                  urlPrefix: "{{ url('editstudio/') }}",
+                              }
+                          },
+                          {
+                              title: "Hapus", field: "link", formatter: "link", formatterParams: {         
+                                  labelField: "name",
+                                  label: "Hapus",
+                                  urlPrefix: "{{ url('delete/') }}",
                               }
                           },
                       ],
                   });
-                  table.setData("");
+                  table.setData("{{ url('tabelstudio') }}");
           </script>
 				
 					</div>

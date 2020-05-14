@@ -102,6 +102,9 @@
 					<!-- DAFTAR -->
 					<div class="col-lg-6 col-md-6">
 						<h3 class="mb-30">Daftar</h3>
+                        <div style="color: red; font-weight: bold;">
+                            <p><?php echo $this->flashSession->output() ?></p>
+                        </div>
 						<form action="register" method = "post">
 							<div class="mt-10">
 								<input type="text" name="username" placeholder="Username"

@@ -87,6 +87,48 @@ $router->addGet('/liststudio', [
     'action' => 'liststudio'
 ]);
 
+$router->addGet('/tabelstudio', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'tabelstudio'
+]);
+
+$router->addGet('/tambahstudio', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'tambahstudio'
+]);
+
+$router->addPost('/tambahstudio', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'storetambahstudio'
+]);
+
+$router->addPost('/tambahstudio', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'storetambahstudio'
+]);
+
+$router->addGet('/editstudio/{id}',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'editstudio'
+]);
+
+$router->addPost('/storeeditstudio',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'storeeditstudio'
+]);
+
 $router->addGet('/listreservasi', [
     'namespace' => $namespace,
     'module' => 'dashboard',

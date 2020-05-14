@@ -96,30 +96,27 @@
 
               <!--   <div class="col-lg-8 mb-5 mb-lg-0"> -->
                     <div style="height: 50%; width: 50%; align-items: center;margin-left: auto;margin-right: auto;">
+                        {% for datas in data %}
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="assets/img/hero/cthstudio.jpg" alt="">
+                                <img class="card-img rounded-0" src="assets/img/studio/{{ datas.image }}" alt="">
                                 <a style="pointer-events: none; background-color: #C78989;" class="blog_item_date">
-                                    <h3>Orchid</h3>
+                                    <h3>{{ datas.nama }}</h3>
                                     <!-- <p>Jan</p> -->
                                 </a>
                             </div>
 
                             <div class="blog_details">
                                 <a class="d-inline-block">
-                                    <h2>Rp. 100.000 / jam</h2>
+                                    <h2>{{ datas.harga }}</h2>
                                 </a>
-                                <p>7 x 5 white limbo<br>
-                                    6 background color<br>
-                                    1x Formex 1000w<br>
-                                    Super boom stand<br>
-                                    Octagonal soft box<br>
-                                    Bluetooth speaker</p>
+                                <p>{{ datas.deskripsi }}</p>
                                 <ul class="blog-info-link">
-                                    <a href="#" class="genric-btn primary">Sewa</a>
+                                    <a href="tambahreservasi" class="genric-btn primary">Sewa</a>
                                 </ul>
                             </div>
                         </article>
+                        {% endfor %}
 
             
 
