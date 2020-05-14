@@ -4,7 +4,7 @@ namespace Phalcon\Init\Dashboard\Controllers\Web;
 
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Dispatcher;
-use Phalcon\Init\Dashboard\Models\user;
+use Phalcon\Init\Dashboard\Models\users;
 use Phalcon\Init\Dashboard\Models\admin;
 use Phalcon\Init\Dashboard\Models\studio;
 use Phalcon\Init\Dashboard\Models\booking;
@@ -39,14 +39,14 @@ class UserController extends Controller
     public function storeregisterAction()
     {
 
-        $pelanggan = new User();
+        $pelanggan = new Users();
         $pelanggan->username = $this->request->getPost('username');
         $pelanggan->email = $this->request->getPost('email');
         $pelanggan->jkel = $this->request->getPost('jkel');
         $password = $this->request->getPost('password');
-        $pelanggan->password = $this->security->hash($password);
         $pelanggan->telepon = $this->request->getPost('telepon');
-        $user = user::findFirst("username = '$pelanggan->username'");
+        $pelanggan->password = $this->security->hash($password);
+        $user = users::findFirst("username = '$pelanggan->username'");
         if ($user) { 
             $this->flashSession->error("Gagal daftar. Username telah digunakan.");
             return $this->response->redirect('register');
@@ -62,6 +62,7 @@ class UserController extends Controller
         
     }
 
+
     public function loginAction()
     {
         $id = $this->session->get('user');
@@ -71,6 +72,45 @@ class UserController extends Controller
             (new Response())->redirect('halamanuser')->send();          
         }
         $this->view->pick('login');
+    }
+
+    public function storeloginAction()
+    {
+        $username = $this->request->getPost('username');
+        $pass = $this->request->getPost('password');
+        // echo $username;
+        // echo $pass;
+        // die();
+        $user = users::findFirst("username = '$username'");
+        // // var_dump ($pemesan);
+        // die();
+            if ($user){
+                // echo "userada";
+                // die();
+                // if($this->security->checkHash($pass, $pemesan->password)){
+                    $this->session->set(
+                        'user',
+                        [
+                            'id' => $user->id,
+                            'username' => $user->username,
+                        ]
+                    );
+                    (new Response())->redirect('halamanuser')->send();
+                    // echo "Masuk bos mantap";
+                //     (new Response())->redirect('home')->send();
+                // }
+                // else{
+                //     echo "password salah";
+                //     die();
+                //     $this->flashSession->error("Gagal masuk sebagai pemesan. Silakan cek kembali username dan password anda.");
+                //     $this->response->redirect('login');
+                // }
+            }
+            else{
+                $this->flashSession->error("Gagal masuk sebagai user. Akun tidak ditemukan.");
+                $this->response->redirect('login');
+                // echo "Akun tidak ditemukan.";
+            }
     }
     public function logoutAction()
     {
