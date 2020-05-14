@@ -136,4 +136,26 @@ $router->addGet('/listreservasi', [
     'action' => 'listreservasi'
 ]);
 
+
+$router->addGet('/akunsaya', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'akunsaya'
+]);
+
+$router->addGet('/editprofil/{id}',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'editprofil'
+]);
+
+$router->addPost('/editprofil',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'storeeditprofil'
+]);
+
 return $router;

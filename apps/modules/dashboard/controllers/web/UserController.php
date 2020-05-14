@@ -25,6 +25,66 @@ class UserController extends Controller
         }
         $this->view->pick('halamanuser');
     }
+
+    public function akunsayaAction()
+    {
+        $ids = $this->session->get('user');
+        if ($ids == NULL) {
+            // echo "berhasil login";
+            // die();
+            (new Response())->redirect('login')->send();          
+        }
+        $id = $this->session->get('user')['id'];
+        $studio = users::findFirst("id = '$id'");
+        $this->view->data=$studio;
+        $this->view->pick('akunsaya');
+    }
+
+    public function editprofilAction($id)
+    {
+        $ids = $this->session->get('user');
+        if ($ids == NULL) {
+            // echo "berhasil login";
+            // die();
+            (new Response())->redirect('login')->send();          
+        }
+        $studio = users::findFirst("id = '$id'");
+        $this->view->data=$studio;
+        $this->view->pick('editprofil');
+    }
+    public function storeeditprofilAction()
+    {
+        // echo "yes pos";
+        // die();
+
+        $id = $this->request->getPost('id');
+        $studio = users::findFirst("id = '$id'");
+        $smw = users::find();
+        // var_dump($studio);
+        // die();
+        $nama = $this->request->getPost('nama');
+        $email = $this->request->getPost('email');
+        $telepon = $this->request->getPost('telepon');
+       
+
+        
+            $studio->username = $username;
+            $studio->nama = $nama;
+            $studio->email =  $email;
+            $studio->telepon = $telepon;
+            
+            
+            if($studio->update()){
+                // echo "berhasil update";
+                // die();
+                return $this->response->redirect('akunsaya');
+            }
+            else{
+                $this->flashSession->error("Gagal diupdate.");
+                $this->response->redirect('editprofil' . '/' . $id);
+            }
+        
+     } 
     public function registerAction()
     {
         $id = $this->session->get('user');
@@ -42,6 +102,7 @@ class UserController extends Controller
         $pelanggan = new Users();
         $pelanggan->username = $this->request->getPost('username');
         $pelanggan->email = $this->request->getPost('email');
+        $pelanggan->nama = $this->request->getPost('nama');
         $pelanggan->jkel = $this->request->getPost('jkel');
         $password = $this->request->getPost('password');
         $pelanggan->telepon = $this->request->getPost('telepon');

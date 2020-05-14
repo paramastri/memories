@@ -58,9 +58,16 @@
                                     <ul id="navigation">    
                                         <li><a style="color: #6A5E5E" href="/"> Home</a></li>
                                         <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
-                                        <li class="active"><a style="color: #6A5E5E" href="register">Daftar</a></li>
-                                        <li><a style="color: #6A5E5E" href="login">Masuk</a></li>
-                                        <li><a style="color: #6A5E5E" href="loginadmin">Admin</a></li>
+                                        <li><a style="color: #6A5E5E" href="tambahreservasi">Buat Reservasi</a></li>
+                                        <li><a style="color: #6A5E5E" href="listreservasisaya">Reservasi Saya</a></li>
+                                        {% if (session.get('user')['username']) %}
+                                        <li class="active"><a href="#">Hai, {{ session.get('user')['username'] }}!</a>
+                                            <ul class="submenu">
+                                                {% endif %}
+                                                <li><a href="akunsaya">Akun Saya</a></li>
+                                                <li><a href="logoutuser">Logout</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -101,51 +108,35 @@
 				<div class="row">
 					<!-- DAFTAR -->
 					<div class="col-lg-6 col-md-6">
-						<h3 class="mb-30">Daftar</h3>
+						<h3 class="mb-30">Edit Profil</h3>
                         <div style="color: red; font-weight: bold;">
                             <p><?php echo $this->flashSession->output() ?></p>
                         </div>
-						<form action="register" method = "post">
-							<div class="mt-10">
-								<input type="text" name="username" placeholder="Username"
-									onfocus="this.placeholder = 'Username'" onblur="this.placeholder = 'Username'" required
-									class="single-input">
-							</div>
+						<form action="{{ url("editprofil") }}"  method = "post">
                             <div class="mt-10">
-                                <input type="text" name="nama" placeholder="Nama Lengkap"
+                                <input type="hidden" name="id" value="{{data.id}}">
+                            </div>
+						
+
+                            <div class="mt-10">
+                                <input type="text" name="nama" value="{{data.nama}}" placeholder="Nama Lengkap"
                                     onfocus="this.placeholder = 'Nama Lengkap'" onblur="this.placeholder = 'Nama Lengkap'" required
                                     class="single-input">
                             </div>
 					 
                           <div class="mt-10">
-                            <input type="email" name="email" placeholder="E-mail"
+                            <input type="email" name="email" value="{{data.email}}" placeholder="E-mail"
                               onfocus="this.placeholder = 'Email'" onblur="this.placeholder = 'Email'" required
                               class="single-input">
                           </div>
-						
-							<div class="mt-10">
-								<input type="password" name="password" placeholder="Password"
-									onfocus="this.placeholder = 'Password'" onblur="this.placeholder = 'Password'" required
-									class="single-input">
-							</div>
-
-                          <div class="input-group-icon mt-10">
-                            <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                            <div class="form-select" id="default-select"">
-                                  <select name="jkel" >
-                                    <option value="1">Laki-laki</option>
-                                    <option value="2">Perempuan</option>
-                                </select>
-                            </div>
-                          </div>
 
                           <div class="mt-10">
-                            <input type="text" name="telepon" placeholder="No. Telepon"
+                            <input type="text" value="{{data.telepon}}" name="telepon" placeholder="No. Telepon"
                               onfocus="this.placeholder = 'No. Telepon'" onblur="this.placeholder = 'No. Telepon'" required
                               class="single-input">
                           </div>
 
-						<button style="margin-top: 40px;" type="submit" class="genric-btn primary">Daftar</button>
+						<button style="margin-top: 40px;" type="submit" class="genric-btn primary">Edit</button>
 						</form>
 					</div>
 

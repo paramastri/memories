@@ -8,6 +8,7 @@ class Users extends Model
 {
     public $id;
     public $username;
+    public $nama;
     public $email;
     public $password;
     public $jkel;

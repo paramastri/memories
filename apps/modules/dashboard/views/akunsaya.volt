@@ -25,20 +25,20 @@
    </head>
 
 <body>
-	
+    
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="../assets/img/logo/logogo.png" alt="">
+                    <img src="assets/img/logo/logogo.png" alt="">
                 </div>
             </div>
         </div>
     </div>
-	<!-- Preloader Start -->
-	
+    <!-- Preloader Start -->
+
     <header>
         <!-- Header Start -->
        <div class="header-area header-transparrent ">
@@ -48,7 +48,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-2">
                             <div class="logo">
-                                <a href="/"><img style="width: 30%;" src="../assets/img/logo/logogo.png" alt=""></a>
+                                <a href="index.html"><img style="width: 30%;" src="assets/img/logo/logogo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -58,9 +58,16 @@
                                     <ul id="navigation">    
                                         <li><a style="color: #6A5E5E" href="/"> Home</a></li>
                                         <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
-                                        <li class="active"><a style="color: #6A5E5E" href="register">Daftar</a></li>
-                                        <li><a style="color: #6A5E5E" href="login">Masuk</a></li>
-                                        <li><a style="color: #6A5E5E" href="loginadmin">Admin</a></li>
+                                        <li><a style="color: #6A5E5E" href="tambahreservasi">Buat Reservasi</a></li>
+                                        <li><a style="color: #6A5E5E" href="listreservasisaya">Reservasi Saya</a></li>
+                                        {% if (session.get('user')['username']) %}
+                                        <li class="active"><a href="#">Hai, {{ session.get('user')['username'] }}!</a>
+                                            <ul class="submenu">
+                                                {% endif %}
+                                                <li><a href="akunsaya">Akun Saya</a></li>
+                                                <li><a href="logoutuser">Logout</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -75,91 +82,70 @@
        </div>
         <!-- Header End -->
     </header>
-	<!-- Slider Area Start-->
 
-<div>
-<!-- 	<div class="services-area sky-blue">
-		
-	</div> -->
-	<!-- Slider Area End-->
+    <!-- Slider Area Start-->
+<!--     <div class="services-area"> -->
+        <div style="margin-top: 10%;" class="container">
+            <!-- Section-tittle -->
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-tittle text-center mb-80">
+                       <!--  <h2>Katalog Studio</h2> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Slider Area End-->
 
-	<!-- Start Sample Area -->
-	
-	<!-- End Sample Area -->
+    <!--================Blog Area =================-->
+    <section class="blog_area section-paddingr">
+        <div class="container">
+            <div class="row">
 
-	<!-- Start Button -->
-	
-	<!-- End Button -->
+              <!--   <div class="col-lg-8 mb-5 mb-lg-0"> -->
+                    <div style="height: 50%; width: 50%; align-items: center;margin-left: auto;margin-right: auto;">
+                      
+                        <article class="blog_item">
+                           
 
-	<!-- Start Align Area -->
-	<div style="margin-top: 200px;" class="whole-wrap">
-		<div class="container box_1170">
-			
-			
-
-	
-				<div class="row">
-					<!-- DAFTAR -->
-					<div class="col-lg-6 col-md-6">
-						<h3 class="mb-30">Daftar</h3>
-                        <div style="color: red; font-weight: bold;">
-                            <p><?php echo $this->flashSession->output() ?></p>
-                        </div>
-						<form action="register" method = "post">
-							<div class="mt-10">
-								<input type="text" name="username" placeholder="Username"
-									onfocus="this.placeholder = 'Username'" onblur="this.placeholder = 'Username'" required
-									class="single-input">
-							</div>
-                            <div class="mt-10">
-                                <input type="text" name="nama" placeholder="Nama Lengkap"
-                                    onfocus="this.placeholder = 'Nama Lengkap'" onblur="this.placeholder = 'Nama Lengkap'" required
-                                    class="single-input">
+                            <div class="blog_details">
+                                <div class="what-img">
+                                        <img style="height: 20%; width: 20%;" src="assets/img/logo/logogo.png" alt="">
+                                    </div>
+                                <a style="margin-top: 20px;" class="d-inline-block">
+                                    <h2>{{ data.username }}</h2>
+                                </a>
+                                <p>{{ data.nama }}<br>
+                                    {{ data.email }}<br>
+                                    {% if data.jkel == 1 %}
+                                    Laki-laki<br>
+                                    {% else %}
+                                    Perempuan<br>
+                                    {% endif %}
+                                    {{ data.telepon }}</p>
+                                <ul class="blog-info-link">
+                                    <a href="editprofil/{{ data.id }}" class="genric-btn primary">Edit</a>
+                                </ul>
                             </div>
-					 
-                          <div class="mt-10">
-                            <input type="email" name="email" placeholder="E-mail"
-                              onfocus="this.placeholder = 'Email'" onblur="this.placeholder = 'Email'" required
-                              class="single-input">
-                          </div>
-						
-							<div class="mt-10">
-								<input type="password" name="password" placeholder="Password"
-									onfocus="this.placeholder = 'Password'" onblur="this.placeholder = 'Password'" required
-									class="single-input">
-							</div>
+                        </article>
+                      
 
-                          <div class="input-group-icon mt-10">
-                            <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                            <div class="form-select" id="default-select"">
-                                  <select name="jkel" >
-                                    <option value="1">Laki-laki</option>
-                                    <option value="2">Perempuan</option>
-                                </select>
-                            </div>
-                          </div>
+            
 
-                          <div class="mt-10">
-                            <input type="text" name="telepon" placeholder="No. Telepon"
-                              onfocus="this.placeholder = 'No. Telepon'" onblur="this.placeholder = 'No. Telepon'" required
-                              class="single-input">
-                          </div>
+                    
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
 
-						<button style="margin-top: 40px;" type="submit" class="genric-btn primary">Daftar</button>
-						</form>
-					</div>
-
-					
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Align Area -->
-	<div style="margin-top: 200px;">
-	 <footer>
+    <footer>
         <!-- Footer Start-->
        <div class="footer-main">
-         <div class="footer-area footer-padding2">
+         <div class="footer-area footer-padding2 sky-blue">
              <div class="container">
                  <div class="row  justify-content-between">
                      <div class="col-lg-3 col-md-4 col-sm-8">

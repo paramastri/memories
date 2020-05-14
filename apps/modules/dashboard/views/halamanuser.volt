@@ -63,6 +63,7 @@
                                         <li><a href="#">Hai, {{ session.get('user')['username'] }}!</a>
                                             <ul class="submenu">
                                                 {% endif %}
+                                                <li><a href="akunsaya">Akun Saya</a></li>
                                                 <li><a href="logoutuser">Logout</a></li>
                                             </ul>
                                         </li>
