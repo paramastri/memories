@@ -107,7 +107,7 @@
 				<div class="row">
 					<!-- DAFTAR -->
 					<div class="col-lg-6 col-md-6">
-						<h3 class="mb-30">Tambah Studio</h3>
+						<h3 class="mb-30">Edit Studio</h3>
                         <div style="color: red; font-weight: bold;">
                             <p><?php echo $this->flashSession->output() ?></p>
                         </div>
@@ -150,7 +150,7 @@
                             </div>
                           </div> -->
 
-						<button style="margin-top: 40px;" type="submit" class="genric-btn primary">Tambah</button>
+						<button style="margin-top: 40px;" type="submit" class="genric-btn primary">Edit</button>
 						</form>
 					</div>
 

@@ -165,16 +165,15 @@ class AdminController extends Controller
 
     public function deleteAction($id)
     {
-        $id = $this->session->get('admin');
-        if ($id == NULL) {
+        $isAdmin = $this->session->get('admin');
+        if ($isAdmin == NULL) {
             // echo "berhasil login";
             // die();
             (new Response())->redirect('loginadmin')->send();          
         }
-        $studio = studio::findFirst("id = '$id'");
-        // $status = 0
-        $studio->status = 0;
-        $studio->update();
+        $user = Studio::findFirst("id='$id'");
+            $user->status = 0;
+            $user->save();
         $this->response->redirect('liststudio');
 
     } 

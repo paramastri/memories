@@ -122,6 +122,13 @@ $router->addGet('/editstudio/{id}',[
     'action' => 'editstudio'
 ]);
 
+$router->addGet('/delete/{id}',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'delete'
+]);
+
 $router->addPost('/storeeditstudio',[
     'namespace' => $namespace,
     'module' => 'dashboard',
