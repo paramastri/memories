@@ -1,7 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-
-<head>
+    <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Memories Studio</title>
@@ -24,8 +23,8 @@
             <link rel="stylesheet" href="../assets/css/style.css">
    </head>
 
-<body>
-    
+   <body>
+       
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -48,7 +47,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-2">
                             <div class="logo">
-                                <a href="index.html"><img style="width: 30%;" src="assets/img/logo/logogo.png" alt=""></a>
+                                <a href="/"><img style="width: 30%;" src="assets/img/logo/logogo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -56,9 +55,17 @@
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">    
-                                        <li><a style="color: #6A5E5E" href="/"> Home</a></li>
-                                        <li class="active"><a style="color: #6A5E5E" href="#">Katalog</a></li>
-                                      
+                                        <li class="active"><a style="color: #6A5E5E" href="/"> Home</a></li>
+                                        <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
+                                        <li><a style="color: #6A5E5E" href="liststudio">Kelola Studio</a></li>
+                                        <li><a style="color: #6A5E5E" href="listreservasi">Kelola Reservasi</a></li>
+                                        {% if (session.get('admin')['username']) %}
+                                        <li><a href="#">Hai, {{ session.get('admin')['username'] }}!</a>
+                                            <ul class="submenu">
+                                                {% endif %}
+                                                <li><a href="logoutadmin">Logout</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -74,64 +81,57 @@
         <!-- Header End -->
     </header>
 
-    <!-- Slider Area Start-->
-<!--     <div class="services-area"> -->
-        <div style="margin-top: 10%;" class="container">
-            <!-- Section-tittle -->
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-tittle text-center mb-80">
-                        <h2>Katalog Studio</h2>
+    <main>
+
+        <!-- Slider Area Start-->
+        <div class="slider-area ">
+            <div class="slider-active">
+                <div class="single-slider slider-height slider-padding sky-blue d-flex align-items-center">
+                    <div class="container">
+                        <div class="row d-flex align-items-center">
+                            <div class="col-lg-6 col-md-9 ">
+                                <div class="hero__caption">
+                                    <span data-animation="fadeInUp" data-delay=".4s">MEMORIES STUDIO</span>
+                                    <h1 data-animation="fadeInUp" data-delay=".6s">Halaman Admin</h1>
+                                    <p data-animation="fadeInUp" data-delay=".8s">Abadikan momenmu, percayakan pada kami!</p>
+                                    <!-- Slider btn -->
+                                   <div class="slider-btns">
+                                        <!-- Hero-btn -->
+                                        <a style="color: #FFF1F1" data-animation="fadeInLeft" data-delay="1.0s" href="listreservasi" class="btn radius-btn">Kelola Reservasi</a>
+                                        <!-- Video Btn -->
+                                        <!-- <a data-animation="fadeInRight" data-delay="1.0s" class="popup-video video-btn ani-btn" href="https://www.youtube.com/watch?v=1aP-TXUpNoU"><i class="fas fa-play"></i></a> -->
+                                   </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="hero__img d-none d-lg-block f-right" data-animation="fadeInRight" data-delay="1s">
+                                    <img style="height: 90%; width: 100%;" src="assets/img/hero/illusadmin.png" alt="">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </div> 
+             
             </div>
         </div>
-    </div>
-    <!-- Slider Area End-->
-
-    <!--================Blog Area =================-->
-    <section class="blog_area section-paddingr">
-        <div class="container">
-            <div class="row">
-
-              <!--   <div class="col-lg-8 mb-5 mb-lg-0"> -->
-                    <div style="height: 50%; width: 50%; align-items: center;margin-left: auto;margin-right: auto;">
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="assets/img/hero/cthstudio.jpg" alt="">
-                                <a style="pointer-events: none; background-color: #C78989;" class="blog_item_date">
-                                    <h3>Orchid</h3>
-                                    <!-- <p>Jan</p> -->
-                                </a>
-                            </div>
-
-                            <div class="blog_details">
-                                <a class="d-inline-block">
-                                    <h2>Rp. 100.000 / jam</h2>
-                                </a>
-                                <p>7 x 5 white limbo<br>
-                                    6 background color<br>
-                                    1x Formex 1000w<br>
-                                    Super boom stand<br>
-                                    Octagonal soft box<br>
-                                    Bluetooth speaker</p>
-                                <ul class="blog-info-link">
-                                    <a href="#" class="genric-btn primary">Sewa</a>
-                                </ul>
-                            </div>
-                        </article>
-
-            
-
-                    
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-    <!--================Blog Area =================-->
-
+        <!-- Slider Area End -->
+       
+        <!-- Services Area Start -->
+        <!-- Services Area End -->
+        <!-- Applic App Start -->
+        <!-- Applic App End -->
+        <!-- Best Pricing Start -->
+        <!-- Pricing Card End -->
+        <!-- Our Customer Start -->
+      
+        <!-- Our Customer End -->
+        <!-- Available App  Start-->
+       
+        <!-- Available App End-->
+        <!-- Say Something Start -->
+        <!-- Say Something End -->
+     
+    </main>
     <footer>
         <!-- Footer Start-->
        <div class="footer-main">

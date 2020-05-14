@@ -102,7 +102,13 @@
                                         <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
                                         <li class="active"><a style="color: #6A5E5E" href="liststudio">Kelola Studio</a></li>
                                         <li><a style="color: #6A5E5E" href="listreservasi">Kelola Reservasi</a></li>
-                                        <li><a style="color: #6A5E5E" href="loginadmin">Admin</a></li>
+                                        {% if (session.get('admin')['username']) %}
+                                        <li><a href="#">Hai, {{ session.get('admin')['username'] }}!</a>
+                                            <ul class="submenu">
+                                                {% endif %}
+                                                <li><a href="logoutadmin">Logout</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>

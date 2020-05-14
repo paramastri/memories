@@ -102,7 +102,7 @@
 					<!-- DAFTAR -->
 					<div class="col-lg-6 col-md-6">
 						<h3 class="mb-30">Masuk Sebagai User</h3>
-						<form action="daftaradmin" method = "post">
+						<form action="login" method = "post">
 							<div class="mt-10">
 								<input type="text" name="username" placeholder="Username"
 									onfocus="this.placeholder = 'Username'" onblur="this.placeholder = 'Username'" required

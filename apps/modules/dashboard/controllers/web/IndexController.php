@@ -25,8 +25,12 @@ class IndexController extends Controller
     public function homeAction()
     {
         $_isAdmin = $this->session->get('admin');
+        $_isUser = $this->session->get('user');
         if ($_isAdmin) {
-            $this->response->redirect('listreservasi');
+            $this->response->redirect('halamanadmin');
+        }
+        if ($_isUser) {
+            $this->response->redirect('halamanuser');
         }
         
         $this->view->pick('home');

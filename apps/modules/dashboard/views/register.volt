@@ -102,18 +102,18 @@
 					<!-- DAFTAR -->
 					<div class="col-lg-6 col-md-6">
 						<h3 class="mb-30">Daftar</h3>
-						<form action="daftaradmin" method = "post">
+						<form action="register" method = "post">
 							<div class="mt-10">
 								<input type="text" name="username" placeholder="Username"
 									onfocus="this.placeholder = 'Username'" onblur="this.placeholder = 'Username'" required
 									class="single-input">
 							</div>
 					 
-              <div class="mt-10">
-                <input type="email" name="email" placeholder="E-mail"
-                  onfocus="this.placeholder = 'Email'" onblur="this.placeholder = 'Email'" required
-                  class="single-input">
-              </div>
+                          <div class="mt-10">
+                            <input type="email" name="email" placeholder="E-mail"
+                              onfocus="this.placeholder = 'Email'" onblur="this.placeholder = 'Email'" required
+                              class="single-input">
+                          </div>
 						
 							<div class="mt-10">
 								<input type="password" name="password" placeholder="Password"
@@ -121,21 +121,21 @@
 									class="single-input">
 							</div>
 
-              <div class="input-group-icon mt-10">
-                <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                <div class="form-select" id="default-select"">
-                      <select>
-                        <option value="1">Laki-laki</option>
-                        <option value="2">Perempuan</option>
-                  </select>
-                </div>
-              </div>
+                          <div class="input-group-icon mt-10">
+                            <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                            <div class="form-select" id="default-select"">
+                                  <select name="jkel" >
+                                    <option value="1">Laki-laki</option>
+                                    <option value="2">Perempuan</option>
+                                </select>
+                            </div>
+                          </div>
 
-              <div class="mt-10">
-                <input type="text" name="telepon" placeholder="No. Telepon"
-                  onfocus="this.placeholder = 'No. Telepon'" onblur="this.placeholder = 'No. Telepon'" required
-                  class="single-input">
-              </div>
+                          <div class="mt-10">
+                            <input type="text" name="telepon" placeholder="No. Telepon"
+                              onfocus="this.placeholder = 'No. Telepon'" onblur="this.placeholder = 'No. Telepon'" required
+                              class="single-input">
+                          </div>
 
 						<button style="margin-top: 40px;" type="submit" class="genric-btn primary">Daftar</button>
 						</form>

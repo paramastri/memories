@@ -2,7 +2,12 @@
 
 $namespace =  'Phalcon\Init\Dashboard\Controllers\Web';
 
-// ADMIN
+$router->addGet('/katalog', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'index',
+    'action' => 'katalog'
+]);
 
 $router->addGet('/loginadmin', [
     'namespace' => $namespace,
@@ -11,12 +16,27 @@ $router->addGet('/loginadmin', [
     'action' => 'loginadmin'
 ]);
 
-$router->addGet('/katalog', [
+$router->addPost('/loginadmin', [
     'namespace' => $namespace,
     'module' => 'dashboard',
-    'controller' => 'index',
-    'action' => 'katalog'
+    'controller' => 'admin',
+    'action' => 'storelogin'
 ]);
+
+$router->addGet('/halamanadmin', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'halamanadmin'
+]);
+
+$router->addGet('/logoutadmin', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'logout'
+]);
+
 
 $router->addGet('/register', [
     'namespace' => $namespace,
@@ -25,11 +45,39 @@ $router->addGet('/register', [
     'action' => 'register'
 ]);
 
+$router->addPost('/register', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'storeregister'
+]);
+
 $router->addGet('/login', [
     'namespace' => $namespace,
     'module' => 'dashboard',
     'controller' => 'user',
     'action' => 'login'
+]);
+
+$router->addPost('/login', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'storelogin'
+]);
+
+$router->addGet('/halamanuser', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'halamanuser'
+]);
+
+$router->addGet('/logoutuser', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'logout'
 ]);
 
 $router->addGet('/liststudio', [

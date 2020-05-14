@@ -5,36 +5,46 @@ namespace Phalcon\Init\Dashboard\Controllers\Web;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Init\Dashboard\Models\admin;
+use Phalcon\Init\Dashboard\Models\user;
 use Phalcon\Init\Dashboard\Models\studio;
+use Phalcon\Init\Dashboard\Models\booking;
 use Phalcon\Http\Request;
 use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Http\Response;
 
 class AdminController extends Controller
 {
+    
 
     // public function listuserAction()
     // {
     //     echo "daftar";
     // }
-    public function listbookingAction()
-    {
-        $this->view->pick(home);
-    }
 
     public function loginadminAction()
     {
-        $this->view->pick(loginadmin);
+        $this->view->pick('loginadmin');
+    }
+
+    public function halamanadminAction()
+    {
+        $id = $this->session->get('admin');
+        if ($id == NULL) {
+            // echo "berhasil login";
+            // die();
+            (new Response())->redirect('loginadmin')->send();          
+        }
+        $this->view->pick('halamanadmin');
     }
     
-    public function storeloginadminAction()
+    public function storeloginAction()
     {
-        $email = $this->request->getPost('email');
+        $username = $this->request->getPost('username');
         $pass = $this->request->getPost('password');
-        // echo $email;
+        // echo $username;
         // echo $pass;
         // die();
-        $admin = admin::findFirst("email = '$email'");
+        $admin = admin::findFirst("username = '$username'");
         // // var_dump ($pemesan);
         // die();
             if ($admin){
@@ -48,7 +58,7 @@ class AdminController extends Controller
                             'username' => $admin->username,
                         ]
                     );
-                    (new Response())->redirect('studio')->send();
+                    (new Response())->redirect('halamanadmin')->send();
                     // echo "Masuk bos mantap";
                 //     (new Response())->redirect('home')->send();
                 // }
@@ -61,9 +71,14 @@ class AdminController extends Controller
             }
             else{
                 $this->flashSession->error("Gagal masuk sebagai admin. Akun tidak ditemukan.");
-                $this->response->redirect('login');
+                $this->response->redirect('loginadmin');
                 // echo "Akun tidak ditemukan.";
             }
+    }
+    public function logoutAction()
+    {
+        $this->session->destroy();
+        $this->response->redirect("loginadmin");
     }
 
     public function storetambahstudioAction()
@@ -107,7 +122,7 @@ class AdminController extends Controller
             // die();
             (new Response())->redirect('loginadmin')->send();          
         }
-        $this->view->pick(tambahstudio);
+        $this->view->pick('tambahstudio');
     }
 
     public function listjenistudioAction()
@@ -142,22 +157,26 @@ class AdminController extends Controller
  
     public function liststudioAction()
     {   
-        // $id = $this->session->get('admin');
-        // if ($id == NULL) {
-        //     // echo "berhasil login";
-        //     // die();
-        //     (new Response())->redirect('loginadmin')->send();          
-        // }
-        // $status = 1;
-        // $studio = studio::find("status = '$status'");
-        // $this->view->data=$studio;
+        $id = $this->session->get('admin');
+        if ($id == NULL) {
+            // echo "berhasil login";
+            // die();
+            (new Response())->redirect('loginadmin')->send();          
+        }
+        $status = 1;
+        $studio = studio::find("status = '$status'");
+        $this->view->data=$studio;
         $this->view->pick('liststudio');
     } 
 
     public function deleteAction($id)
     {
-         // echo $id;
-         // die();
+        $id = $this->session->get('admin');
+        if ($id == NULL) {
+            // echo "berhasil login";
+            // die();
+            (new Response())->redirect('loginadmin')->send();          
+        }
         $studio = studio::findFirst("id = '$id'");
         // $status = 0
         $studio->status = 0;
@@ -214,13 +233,13 @@ class AdminController extends Controller
 
     public function listreservasiAction()
     {
-        // $id = $this->session->get('admin');
-        // if ($id == NULL) {
-        //     // echo "berhasil login";
-        //     // die();
-        //     (new Response())->redirect('loginadmin')->send();          
-        // }
-        $this->view->pick(listreservasi);
+        $id = $this->session->get('admin');
+        if ($id == NULL) {
+            // echo "berhasil login";
+            // die();
+            (new Response())->redirect('loginadmin')->send();          
+        }
+        $this->view->pick('listreservasi');
      } 
 
 

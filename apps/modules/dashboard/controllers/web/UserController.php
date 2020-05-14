@@ -4,7 +4,7 @@ namespace Phalcon\Init\Dashboard\Controllers\Web;
 
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Dispatcher;
-use Phalcon\Init\Dashboard\Models\pemesan;
+use Phalcon\Init\Dashboard\Models\user;
 use Phalcon\Init\Dashboard\Models\admin;
 use Phalcon\Init\Dashboard\Models\studio;
 use Phalcon\Init\Dashboard\Models\booking;
@@ -14,19 +14,73 @@ use Phalcon\Http\Response;
 
 class UserController extends Controller
 {
+
+    public function halamanuserAction()
+    {
+        $id = $this->session->get('user');
+        if ($id == NULL) {
+            // echo "berhasil login";
+            // die();
+            (new Response())->redirect('login')->send();          
+        }
+        $this->view->pick('halamanuser');
+    }
     public function registerAction()
     {
+        $id = $this->session->get('user');
+        if ($id) {
+            // echo "berhasil login";
+            // die();
+            (new Response())->redirect('halamanuser')->send();          
+        }
         $this->view->pick('register');
+    }
+
+    public function storeregisterAction()
+    {
+
+        $pelanggan = new User();
+        $pelanggan->username = $this->request->getPost('username');
+        $pelanggan->email = $this->request->getPost('email');
+        $pelanggan->jkel = $this->request->getPost('jkel');
+        $password = $this->request->getPost('password');
+        $pelanggan->password = $this->security->hash($password);
+        $pelanggan->telepon = $this->request->getPost('telepon');
+        $user = user::findFirst("username = '$pelanggan->username'");
+        if ($user) { 
+            $this->flashSession->error("Gagal daftar. Username telah digunakan.");
+            return $this->response->redirect('register');
+            // echo "username sudah digunakan.";
+        }
+        else
+        {
+            $pelanggan->save();
+            // printf (strlen($pelanggan->password));
+            // echo "masuk";
+            return $this->response->redirect('login');
+        }
+        
     }
 
     public function loginAction()
     {
+        $id = $this->session->get('user');
+        if ($id) {
+            // echo "berhasil login";
+            // die();
+            (new Response())->redirect('halamanuser')->send();          
+        }
         $this->view->pick('login');
+    }
+    public function logoutAction()
+    {
+        $this->session->destroy();
+        $this->response->redirect("login");
     }
 
     public function reservasistudioAction()
     {   
-        $id = $this->session->get('pemesan');
+        $id = $this->session->get('user');
         if ($id == NULL) {
             // echo "berhasil login";
             // die();
@@ -65,20 +119,20 @@ class UserController extends Controller
         $booking->bayar = $bayar;
 
         $booking->save();
-        $this->response->redirect('reservasisaya');
+        $this->response->redirect('listreservasisaya');
     }
 
-    public function reservasisayaAction()
+    public function listreservasisayaAction()
     {   
-        $id = $this->session->get('pemesan');
+        $id = $this->session->get('user');
         if ($id == NULL) {
             // echo "berhasil login";
             // die();
             (new Response())->redirect('login')->send();          
         }
-        $this->view->pick('reservasisaya');
+        $this->view->pick('listreservasisaya');
     } 
-    public function listreservasisayaAction()
+    public function tabelreservasisayaAction()
     {   
         $bookings = booking::find();
         $data = array();
@@ -118,7 +172,7 @@ class UserController extends Controller
         $booking = booking::findFirst("id='$id'");
         if($booking){
             $this->db->query("delete from booking where id='".$id."'");
-            $this->response->redirect('reservasisaya');
+            $this->response->redirect('listreservasisaya');
         }
         
     }

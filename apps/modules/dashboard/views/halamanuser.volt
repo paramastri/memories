@@ -57,9 +57,15 @@
                                     <ul id="navigation">    
                                         <li class="active"><a style="color: #6A5E5E" href="/"> Home</a></li>
                                         <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
-                                        <li><a style="color: #6A5E5E" href="register">Daftar</a></li>
-                                        <li><a style="color: #6A5E5E" href="login">Masuk</a></li>
-                                        <li><a style="color: #6A5E5E" href="loginadmin">Admin</a></li>
+                                        <li><a style="color: #6A5E5E" href="tambahreservasi">Buat Reservasi</a></li>
+                                        <li><a style="color: #6A5E5E" href="listreservasisaya">Reservasi Saya</a></li>
+                                        {% if (session.get('user')['username']) %}
+                                        <li><a href="#">Hai, {{ session.get('user')['username'] }}!</a>
+                                            <ul class="submenu">
+                                                {% endif %}
+                                                <li><a href="logoutuser">Logout</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -75,7 +81,7 @@
         <!-- Header End -->
     </header>
 
-    <main>
+   <main>
 
         <!-- Slider Area Start-->
         <div class="slider-area ">
@@ -91,7 +97,7 @@
                                     <!-- Slider btn -->
                                    <div class="slider-btns">
                                         <!-- Hero-btn -->
-                                        <a style="color: #FFF1F1" data-animation="fadeInLeft" data-delay="1.0s" href="daftar" class="btn radius-btn">Sewa Sekarang</a>
+                                        <a style="color: #FFF1F1" data-animation="fadeInLeft" data-delay="1.0s" href="tambahreservasi" class="btn radius-btn">Sewa Sekarang</a>
                                         <!-- Video Btn -->
                                         <!-- <a data-animation="fadeInRight" data-delay="1.0s" class="popup-video video-btn ani-btn" href="https://www.youtube.com/watch?v=1aP-TXUpNoU"><i class="fas fa-play"></i></a> -->
                                    </div>

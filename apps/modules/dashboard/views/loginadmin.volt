@@ -102,7 +102,10 @@
 					<!-- DAFTAR -->
 					<div class="col-lg-6 col-md-6">
 						<h3 class="mb-30">Masuk Sebagai Admin</h3>
-						<form action="daftaradmin" method = "post">
+                        <div style="color: red; font-weight: bold;">
+                            <p><?php echo $this->flashSession->output() ?></p>
+                        </div>
+						<form action="loginadmin" method = "post">
 							<div class="mt-10">
 								<input type="text" name="username" placeholder="Username"
 									onfocus="this.placeholder = 'Username'" onblur="this.placeholder = 'Username'" required
