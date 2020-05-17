@@ -1,15 +1,16 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-    <head>
+
+<head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>You Matter Website</title>
+        <title>Memories Studio</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/logogo.png">
+        <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/logogo.png">
 
-		<!-- CSS here -->
+        <!-- CSS here -->
             <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
             <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
             <link rel="stylesheet" href="../assets/css/flaticon.css">
@@ -23,8 +24,8 @@
             <link rel="stylesheet" href="../assets/css/style.css">
    </head>
 
-   <body>
-       
+<body>
+	
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -36,8 +37,8 @@
             </div>
         </div>
     </div>
-    <!-- Preloader Start -->
-
+	<!-- Preloader Start -->
+	
     <header>
         <!-- Header Start -->
        <div class="header-area header-transparrent ">
@@ -55,13 +56,16 @@
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">    
-                                        <li class="active"><a href="/">Beranda</a></li>
-                                        <li><a href="artikel">Artikel</a></li>
-                                        <li><a href="#">Masuk</a>
+                                        <li><a style="color: #6A5E5E" href="/"> Home</a></li>
+                                        <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
+                                        <li><a style="color: #6A5E5E" href="tambahreservasi">Buat Reservasi</a></li>
+                                        <li><a style="color: #6A5E5E" href="listreservasisaya">Reservasi Saya</a></li>
+                                        {% if (session.get('user')['username']) %}
+                                        <li class="active"><a href="#">Hai, {{ session.get('user')['username'] }}!</a>
                                             <ul class="submenu">
-                                                <li><a href="pasien">Pasien</a></li>
-                                                <li><a href="psikolog">Psikolog</a></li>
-                                                <li><a href="loginadmin">Admin</a></li>
+                                                {% endif %}
+                                                <li><a href="akunsaya">Akun Saya</a></li>
+                                                <li><a href="logoutuser">Logout</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -78,109 +82,72 @@
        </div>
         <!-- Header End -->
     </header>
+	<!-- Slider Area Start-->
 
-    <main>
+<div>
+<!-- 	<div class="services-area sky-blue">
+		
+	</div> -->
+	<!-- Slider Area End-->
 
-        <!-- Slider Area Start-->
-        <div class="slider-area ">
-            <div class="slider-active">
-                <div class="single-slider slider-height sky-blue d-flex align-items-center">
-                    <div class="container">
-                        <div class="row d-flex align-items-center">
-                            <div class="col-lg-6 col-md-9 ">
-                                <div class="hero__caption">
-                                  
-                                    <h1 data-animation="fadeInUp" data-delay=".6s">You Matter</h1>
-                                    <p data-animation="fadeInUp" data-delay=".8s">Tanya ke psikolog dan lihat ulasan jawabannya pada artikel!</p>
-                                    <!-- Slider btn -->
-                                   <div class="slider-btns">
-                                        <!-- Hero-btn -->
-                                        <a data-animation="fadeInLeft" data-delay="1.0s" href="pasien" class="btn radius-btn">Tanya Sekarang</a>
-                                        <!-- Video Btn -->
-                                        <!-- <a data-animation="fadeInRight" data-delay="1.0s" class="popup-video video-btn ani-btn" href="https://www.youtube.com/watch?v=1aP-TXUpNoU"><i class="fas fa-play"></i></a> -->
-                                   </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="hero__img d-none d-lg-block f-right" data-animation="fadeInRight" data-delay="1s">
-                                    <img style="height: 80%;" src="../assets/img/hero/illus.png" alt="">
-                                </div>
-                            </div>
+	<!-- Start Sample Area -->
+	
+	<!-- End Sample Area -->
+
+	<!-- Start Button -->
+	
+	<!-- End Button -->
+
+	<!-- Start Align Area -->
+	<div style="margin-top: 200px;" class="whole-wrap">
+		<div class="container box_1170">
+			
+			
+
+	
+				<div class="row">
+					<!-- DAFTAR -->
+					<div class="col-lg-6 col-md-6">
+						<h3 class="mb-30">Edit Profil</h3>
+                        <div style="color: red; font-weight: bold;">
+                            <p><?php echo $this->flashSession->output() ?></p>
                         </div>
-                    </div>
-                </div> 
-            </div>
-        </div>
-
-        <!-- Our Customer Start -->
-        <div class="our-customer section-padd-top30">
-            <div class="container-fluid">
-            <div class="our-customer-wrapper">
-                    <!-- Section Tittle -->
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-xl-8">
-                            <div class="section-tittle text-center">
-                                <h2>Kata Mereka</h2>
+						<form action="{{ url("editprofil") }}"  method = "post">
+                            <div class="mt-10">
+                                <input type="hidden" name="id" value="{{data.id}}">
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="customar-active dot-style d-flex dot-style">
-                                <div class="single-customer mb-100">
-                                    <div class="what-img">
-                                        <img src="../assets/img/shape/man1.png" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="#">Bagi Saya</a></h4>
-                                        <p>Saya jadi mengenal siapa kawan dan siapa lawan yang sesungguhnya saat saya depresi. Karena saat saya berada di titik terendah hidup saya, di situlah saya tahu siapa yang benar-benar ada untuk saya.</p>
-                                    </div>
-                                </div>
-                            
-                                <div class="single-customer mb-100">
-                                    <div class="what-img">
-                                        <img src="../assets/img/shape/man2.png" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="#">Gara-gara You Matter</a></h4>
-                                        <p>Yang saya dapatkan adalah perasaan haru dan bahagia karena I survived! Karena bagi saya, depresi adalah ujian dari Tuhan yang menginginkan saya untuk menjadi orang yang lebih baik lagi. Saya jauh menjadi lebih empatik dan bisa merasakan perasaan orang lain setelah saya depresi.</p>
-                                    </div>
-                                </div>
-                            
-                                <div class="single-customer mb-100">
-                                    <div class="what-img">
-                                        <img src="../assets/img/shape/man3.png" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="#">Yuk, pakai You Matter!</a></h4>
-                                        <p>Saya pun ingin menunjukan ke teman-teman bahwa pergi ke psikolog bukanlah hal yang memalukan. Kalian tetap manusia yang baik dan hebat walaupun kalian pergi ke psikolog, sama seperti ketika kalian pergi ke dokter.</p>
-                                    </div>
-                                </div>
-                            
-                                <div class="single-customer mb-100">
-                                    <div class="what-img">
-                                        <img src="../assets/img/shape/man4.png" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="#">Terima kasih, You Matter!</a></h4>
-                                        <p>Saya tidak malu untuk menceritakan bahwa saya pernah depresi atau memiliki gangguan jiwa. Bagi saya, saat ini adalah era authenticity dan vulnerability. Era di mana kita bisa terbuka mengenai diri kita yang sebenarnya dan menerima kekurangan kita. </p>
-                                    </div>
-                                </div>
-                            
+						
 
-                        </div>
-                    </div>
-            </div>
-            </div>
-        </div>           
-        <!-- Our Customer End -->
-        <div style="margin-top: 3%;" class="say-btn text-center">
-             <a href="psikolog" class="btn radius-btn">Daftar Sebagai Psikolog</a>
-        </div>
-      </div>
+                            <div class="mt-10">
+                                <input type="text" name="nama" value="{{data.nama}}" placeholder="Nama Lengkap"
+                                    onfocus="this.placeholder = 'Nama Lengkap'" onblur="this.placeholder = 'Nama Lengkap'" required
+                                    class="single-input">
+                            </div>
+					 
+                          <div class="mt-10">
+                            <input type="email" name="email" value="{{data.email}}" placeholder="E-mail"
+                              onfocus="this.placeholder = 'Email'" onblur="this.placeholder = 'Email'" required
+                              class="single-input">
+                          </div>
 
-        </main>
-  <footer style="background-color: #f4feff;">
+                          <div class="mt-10">
+                            <input type="text" value="{{data.telepon}}" name="telepon" placeholder="No. Telepon"
+                              onfocus="this.placeholder = 'No. Telepon'" onblur="this.placeholder = 'No. Telepon'" required
+                              class="single-input">
+                          </div>
+
+						<button style="margin-top: 40px;" type="submit" class="genric-btn primary">Edit</button>
+						</form>
+					</div>
+
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Align Area -->
+	<div style="margin-top: 200px;">
+	 <footer>
         <!-- Footer Start-->
        <div class="footer-main">
          <div class="footer-area footer-padding2">
@@ -194,7 +161,7 @@
                              </div>
                               <div class="footer-tittle">
                                   <div class="footer-pera">
-                                      <p class="info1">Just a reminder in case your mind is playing tricks on you today: You matter. You're important. You're loved. And your presence on this earth makes a difference whether you see it or not.</p>
+                                      <p class="info1">Photograph: a picture painted by the sun without instruction in art</p><p style="font-weight: bold;">—Ambrose Bierce</p>
                                  </div>
                               </div>
                           </div>
@@ -204,9 +171,9 @@
                              <div class="footer-tittle">
                                  <h4>Quick Links</h4>
                                  <ul>
-                                     <li><a href="artikel">Artikel</a></li>
-                                     <li><a href="pasien">Daftar Pasien</a></li>
-                                     <li><a href="psikolog">Daftar Psikolog</a></li>
+                                     <li><a href="artikel">Katalog</a></li>
+                                     <li><a href="pasien">Daftar</a></li>
+                                     <li><a href="psikolog">Masuk</a></li>
                                  </ul>
                              </div>
                          </div>

@@ -57,9 +57,15 @@
                                     <ul id="navigation">    
                                         <li class="active"><a style="color: #6A5E5E" href="/"> Home</a></li>
                                         <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
-                                        <li><a style="color: #6A5E5E" href="register">Daftar</a></li>
-                                        <li><a style="color: #6A5E5E" href="login">Masuk</a></li>
-                                        <li><a style="color: #6A5E5E" href="loginadmin">Admin</a></li>
+                                        <li><a style="color: #6A5E5E" href="liststudio">Kelola Studio</a></li>
+                                        <li><a style="color: #6A5E5E" href="listreservasi">Kelola Reservasi</a></li>
+                                        {% if (session.get('admin')['username']) %}
+                                        <li><a href="#">Hai, {{ session.get('admin')['username'] }}!</a>
+                                            <ul class="submenu">
+                                                {% endif %}
+                                                <li><a href="logoutadmin">Logout</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -85,13 +91,13 @@
                         <div class="row d-flex align-items-center">
                             <div class="col-lg-6 col-md-9 ">
                                 <div class="hero__caption">
-                                    <span data-animation="fadeInUp" data-delay=".4s">selamat datang di</span>
-                                    <h1 data-animation="fadeInUp" data-delay=".6s">Memories Studio</h1>
+                                    <span data-animation="fadeInUp" data-delay=".4s">MEMORIES STUDIO</span>
+                                    <h1 data-animation="fadeInUp" data-delay=".6s">Halaman Admin</h1>
                                     <p data-animation="fadeInUp" data-delay=".8s">Abadikan momenmu, percayakan pada kami!</p>
                                     <!-- Slider btn -->
                                    <div class="slider-btns">
                                         <!-- Hero-btn -->
-                                        <a style="color: #FFF1F1" data-animation="fadeInLeft" data-delay="1.0s" href="daftar" class="btn radius-btn">Sewa Sekarang</a>
+                                        <a style="color: #FFF1F1" data-animation="fadeInLeft" data-delay="1.0s" href="listreservasi" class="btn radius-btn">Kelola Reservasi</a>
                                         <!-- Video Btn -->
                                         <!-- <a data-animation="fadeInRight" data-delay="1.0s" class="popup-video video-btn ani-btn" href="https://www.youtube.com/watch?v=1aP-TXUpNoU"><i class="fas fa-play"></i></a> -->
                                    </div>
@@ -99,7 +105,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="hero__img d-none d-lg-block f-right" data-animation="fadeInRight" data-delay="1s">
-                                    <img style="height: 90%; width: 100%;" src="assets/img/hero/illus.png" alt="">
+                                    <img style="height: 90%; width: 100%;" src="assets/img/hero/illusadmin.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -109,75 +115,7 @@
             </div>
         </div>
         <!-- Slider Area End -->
-        <!-- Best Features Start -->
-        <section class="best-features-area section-padd4">
-            <div class="container">
-                <div class="row justify-content-end">
-                    <div class="col-xl-8 col-lg-10">
-                        <!-- Section Tittle -->
-                        <div class="row">
-                            <div class="col-lg-10 col-md-10">
-                                <div class="section-tittle">
-                                    <h2>Kenapa Harus Kami?</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Section caption -->
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="single-features mb-70">
-                                    <div class="features-icon">
-                                        <span class=""></span>
-                                    </div>
-                                    <div class="features-caption">
-                                        <h3>Harga terjangkau</h3>
-                                        <p>Tidak perlu repot-repot patungan dalam jumlah besar! Memories Studio menyediakan harga yang paling bisa dijangkau semua kalangan.</p>
-                                    </div>
-                                </div>
-                            </div>
-                             <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="single-features mb-70">
-                                    <div class="features-icon">
-                                        <span class=""></span>
-                                    </div>
-                                    <div class="features-caption">
-                                        <h3>Studio terbaik</h3>
-                                        <p>Memories Studio terus mengembangkanagar selalu up-to-date dan menghadirkan nuansa yang fresh di setiap moment anda.</p>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="single-features mb-70">
-                                    <div class="features-icon">
-                                        <span class=""></span>
-                                    </div>
-                                    <div class="features-caption">
-                                        <h3>Fasilitas lengkap</h3>
-                                        <p>Takut bosan saat menunggu giliran pemotretan? Tidak masalah! Kami menyediakan layanan lengkap dan tentunya menarik untuk mengisi waktu. Dijamin menunggu bukan hal membosankan lagi!</p>
-                                    </div>
-                                </div>
-                            </div>
-                             <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="single-features mb-70">
-                                    <div class="features-icon">
-                                        <span class=""></span>
-                                    </div>
-                                    <div class="features-caption">
-                                        <h3>Sewa mudah</h3>
-                                        <p>Tidak perlu pusing SMS/WA lagi! Cukup dengan registrasi akun, anda langsung dapat melakukan sewa studio dalam satu kali klik.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Shpe -->
-            <div class="features-shpae d-none d-lg-block">
-                <img src="assets/img/hero/illus2.png" alt="">
-            </div>
-        </section>
-        <!-- Best Features End -->
+       
         <!-- Services Area Start -->
         <!-- Services Area End -->
         <!-- Applic App Start -->
@@ -185,67 +123,7 @@
         <!-- Best Pricing Start -->
         <!-- Pricing Card End -->
         <!-- Our Customer Start -->
-        <div class="our-customer section-padd-top30  sky-blue">
-            <div class="container-fluid">
-            <div class="our-customer-wrapper">
-                    <!-- Section Tittle -->
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-xl-8">
-                            <div class="section-tittle text-center">
-                                <h2>Kata Mereka</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="customar-active dot-style d-flex dot-style">
-                                <div class="single-customer mb-100">
-                                    <div class="what-img">
-                                        <img src="assets/img/shape/man1.png" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="#">Mantap!</a></h4>
-                                        <p>Pertama kali coba, udah langsung nyaman parah! Asli ga bohong. Foto-foto sambil cekikikan nonton youtube dan dengerin lagu. Seru bro!</p>
-                                    </div>
-                                </div>
-                            
-                                <div class="single-customer mb-100">
-                                    <div class="what-img">
-                                        <img src="assets/img/shape/man2.png" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="#">Keren Banget, Memories!</a></h4>
-                                        <p>Gila ga nyangka ada studio selengkap ini! Rasanya ke sini kaya ga cuman buat foto doang. Keren nih, fix mau re-book kapan-kapan.</p>
-                                    </div>
-                                </div>
-                            
-                                <div class="single-customer mb-100">
-                                    <div class="what-img">
-                                        <img src="assets/img/shape/man3.png" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="#">Thanks, Memories!</a></h4>
-                                        <p>Memories bikin momen-momen berhargaku semakin indah. Terima kasih, Memories!</p>
-                                    </div>
-                                </div>
-                            
-                                <div class="single-customer mb-100">
-                                    <div class="what-img">
-                                        <img src="assets/img/shape/man2.png" alt="">
-                                    </div>
-                                    
-                                    <div class="what-cap">
-                                        <h4><a href="#">Highly Recommended</a></h4>
-                                        <p>Udah berkali-kali aku sewa Memories, tiap sewa fasilitas ga pernah ada yang menurun. Semuanya terawat dan selalu tampak baru. Yuk, pada booking sekarang!</p>
-                                    </div>
-                                </div>
-                            
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            </div>
-        </div>           
+      
         <!-- Our Customer End -->
         <!-- Available App  Start-->
        

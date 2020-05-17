@@ -2,20 +2,11 @@
 
 $namespace =  'Phalcon\Init\Dashboard\Controllers\Web';
 
-// ADMIN
-
-$router->addGet('/daftaradmin', [
+$router->addGet('/katalog', [
     'namespace' => $namespace,
     'module' => 'dashboard',
-    'controller' => 'admin',
-    'action' => 'daftaradmin'
-]);
-
-$router->addPost('/daftaradmin', [
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'admin',
-    'action' => 'storeregister'
+    'controller' => 'index',
+    'action' => 'katalog'
 ]);
 
 $router->addGet('/loginadmin', [
@@ -32,13 +23,6 @@ $router->addPost('/loginadmin', [
     'action' => 'storelogin'
 ]);
 
-$router->addGet('/logoutadmin', [
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'admin',
-    'action' => 'logout'
-]);
-
 $router->addGet('/halamanadmin', [
     'namespace' => $namespace,
     'module' => 'dashboard',
@@ -46,114 +30,132 @@ $router->addGet('/halamanadmin', [
     'action' => 'halamanadmin'
 ]);
 
-$router->addGet('/listpsikolog',[
+$router->addGet('/logoutadmin', [
     'namespace' => $namespace,
     'module' => 'dashboard',
     'controller' => 'admin',
-    'action' => 'listpsikolog'
-]);
-
-$router->addGet('/listpsikologview/{id}',[
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'admin',
-    'action' => 'listpsikologview'
-]);  
-
-$router->addGet('/verifdetail/{id}',[
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'admin',
-    'action' => 'verifdetail'
-]);
-
-$router->addGet('/verifpsikolog/{id}',[
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'admin',
-    'action' => 'verifpsikolog'
-]); 
-
-$router->addGet('/unverifpsikolog/{id}',[
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'admin',
-    'action' => 'unverifpsikolog'
-]);                   
-
-// PASIEN
-
-$router->addGet('/pasien', [
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'pasien',
-    'action' => 'pasien'
-]);
-
-$router->addPost('/daftarpasien', [
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'pasien',
-    'action' => 'storeregister'
-]);
-
-$router->addPost('/loginpasien', [
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'pasien',
-    'action' => 'storelogin'
-]);
-
-$router->addGet('/logoutpasien', [
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'pasien',
     'action' => 'logout'
 ]);
 
-$router->addGet('/halamanpasien', [
+
+$router->addGet('/register', [
     'namespace' => $namespace,
     'module' => 'dashboard',
-    'controller' => 'pasien',
-    'action' => 'halamanpasien'
+    'controller' => 'user',
+    'action' => 'register'
 ]);
 
-
-// PSIKOLOG
-
-$router->addGet('/psikolog', [
+$router->addPost('/register', [
     'namespace' => $namespace,
     'module' => 'dashboard',
-    'controller' => 'psikolog',
-    'action' => 'psikolog'
-]);
-
-$router->addPost('/daftarpsikolog', [
-    'namespace' => $namespace,
-    'module' => 'dashboard',
-    'controller' => 'psikolog',
+    'controller' => 'user',
     'action' => 'storeregister'
 ]);
 
-$router->addPost('/loginpsikolog', [
+$router->addGet('/login', [
     'namespace' => $namespace,
     'module' => 'dashboard',
-    'controller' => 'psikolog',
+    'controller' => 'user',
+    'action' => 'login'
+]);
+
+$router->addPost('/login', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
     'action' => 'storelogin'
 ]);
 
-$router->addGet('/logoutpsikolog', [
+$router->addGet('/halamanuser', [
     'namespace' => $namespace,
     'module' => 'dashboard',
-    'controller' => 'psikolog',
+    'controller' => 'user',
+    'action' => 'halamanuser'
+]);
+
+$router->addGet('/logoutuser', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
     'action' => 'logout'
 ]);
 
-$router->addGet('/halamanpsikolog', [
+$router->addGet('/liststudio', [
     'namespace' => $namespace,
     'module' => 'dashboard',
-    'controller' => 'psikolog',
-    'action' => 'halamanpsikolog'
+    'controller' => 'admin',
+    'action' => 'liststudio'
+]);
+
+$router->addGet('/tabelstudio', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'tabelstudio'
+]);
+
+$router->addGet('/tambahstudio', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'tambahstudio'
+]);
+
+$router->addPost('/tambahstudio', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'storetambahstudio'
+]);
+
+$router->addGet('/editstudio/{id}',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'editstudio'
+]);
+
+$router->addGet('/delete/{id}',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'delete'
+]);
+
+$router->addPost('/storeeditstudio',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'storeeditstudio'
+]);
+
+$router->addGet('/listreservasi', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'listreservasi'
+]);
+
+
+$router->addGet('/akunsaya', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'akunsaya'
+]);
+
+$router->addGet('/editprofil/{id}',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'editprofil'
+]);
+
+$router->addPost('/editprofil',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'storeeditprofil'
 ]);
 
 return $router;
