@@ -158,4 +158,18 @@ $router->addPost('/editprofil',[
     'action' => 'storeeditprofil'
 ]);
 
+$router->addGet('/tambahreservasi',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'tambahreservasi'
+]);
+
+$router->addPost('/storetambahreservasi',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'storetambahreservasi'
+]);
+
 return $router;

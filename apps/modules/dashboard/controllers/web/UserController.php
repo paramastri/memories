@@ -179,7 +179,7 @@ class UserController extends Controller
         $this->response->redirect("login");
     }
 
-    public function reservasistudioAction()
+    public function tambahreservasiAction()
     {   
         $id = $this->session->get('user');
         if ($id == NULL) {
@@ -189,10 +189,10 @@ class UserController extends Controller
         }
         $studio = studio::find();
         $this->view->data=$studio;
-        $this->view->pick('reservasistudio');
+        $this->view->pick('tambahreservasi');
     } 
 
-    public function storereservasistudioAction(){
+    public function storetambahreservasiAction(){
         $booking = new booking();
 
         $jenis = $this->request->getPost('jenis');
