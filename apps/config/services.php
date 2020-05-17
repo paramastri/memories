@@ -20,7 +20,7 @@ $di->setShared('session',function () {
 
         $files = new Stream(
             [
-                'savePath' => '/mnt/e/git/youmatter/session',
+                'savePath' => '/mnt/e/git/memories/session',
             ]
         );
         
