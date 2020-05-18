@@ -179,4 +179,20 @@ $router->addGet('/listreservasisaya',[
     'action' => 'listreservasisaya'
 ]);
 
+$router->addGet('/tabelreservasisaya', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'tabelreservasisaya'
+]);
+
+
+$router->addGet('/reservasisaya/batalkan/{id}', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'batalkanreservasi'
+]);
+
+
 return $router;

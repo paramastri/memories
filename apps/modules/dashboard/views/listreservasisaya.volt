@@ -166,19 +166,26 @@
                       layout:"fitColumns",
                       placeholder: "Tidak Ada Data",
                       columns: [
-                          {title: "No", field: "no", formatter: "rownum", width: 10},
-                          {title: "Username", field: "username", headerFilter:"input"},
-                          {title: "Status Verifikasi", field: "status", headerFilter:"input"},
-                          {
-                              title: "Edit", field: "link", formatter: "link", formatterParams: {         
-                                  labelField: "name",
-                                  label: "Edit",
-                                  urlPrefix: "",
-                              }
-                          },
+            {title: "No", field: "no", formatter: "rownum", width: 10},
+            {title: "Nama Studio", field: "nama_studio", headerFilter:"input"},
+            {title: "Atas Nama", field: "nama", headerFilter:"input"},
+            {title: "Tanggal", field: "tanggal", headerFilter:"input"},
+            {title: "Jam Mulai", field: "jam_mulai", headerFilter:"input"},
+            {title: "Jam Selesai", field: "jam_selesai", headerFilter:"input"},
+            {title: "Durasi", field: "selama", headerFilter:"input"},
+            {title: "Bayar", field: "bayar", headerFilter:"input"},
+            {title: "Status Bayar", field: "sudah_bayar", headerFilter:"input"},
+            {
+                title: "Batalkan Reservasi", field: "link", formatter: "link", formatterParams: {
+                    labelField: "id",
+                    label: "Batalkan",
+                    urlPrefix: "{{ url('reservasisaya/batalkan/') }}",
+                    // target: "_blank",
+                }
+            },
                       ],
                   });
-                  table.setData("");
+                  table.setData("tabelreservasisaya");
           </script>
 				
 					</div>

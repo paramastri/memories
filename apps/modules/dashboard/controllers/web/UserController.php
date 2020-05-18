@@ -232,6 +232,16 @@ class UserController extends Controller
         }
         $this->view->pick('listreservasisaya');
     } 
+
+    public function batalkanreservasiAction($id)
+    {
+        $booking = booking::findFirst("id='$id'");
+        if($booking){
+            $this->db->query("delete from booking where id='".$id."'");
+            $this->response->redirect('listreservasisaya');
+        }
+        
+    }
     public function tabelreservasisayaAction()
     {   
         $bookings = booking::find();
@@ -252,7 +262,7 @@ class UserController extends Controller
                 'link' => $booking->id,
                 'nama_studio' => $studio->nama,
                 'nama' => $booking->nama,
-                'no_hp' => $booking->no_hp,
+                // 'no_hp' => $booking->no_hp,
                 'tanggal' => $booking->tanggal,
                 'jam_mulai' => $booking->jam_mulai,
                 'jam_selesai' => $booking->jam_selesai,
@@ -267,15 +277,6 @@ class UserController extends Controller
         return $this->response->setContent($content);
     } 
 
-    public function batalkanAction($id)
-    {
-        $booking = booking::findFirst("id='$id'");
-        if($booking){
-            $this->db->query("delete from booking where id='".$id."'");
-            $this->response->redirect('listreservasisaya');
-        }
-        
-    }
 
 
 
