@@ -273,10 +273,53 @@ class AdminController extends Controller
                 'konfirmasi'=> $konfirmasi,
             );
         }
+
+
         
         $content = json_encode($data);
         return $this->response->setContent($content);
     } 
+    public function detailreservasiAction($id)
+    {
+        $booking = booking::findFirst("id='$id'");
+        $idstu = $booking->id_studio;
+        $studio = studio::findFirst("id='$idstu'");
+        if($booking){
+            $this->view->data=$booking;
+            $this->view->datas=$studio;
+            $this->view->pick('detailreservasi');
+        }
+        
+    }
 
+    public function downloadAction($id)
+    { 
+        // echo $id;
+        // die();
+        $booking = booking::findFirst("id='$id'");
+        
+            if($booking->bukti)
+            {
+                // echo "ada";
+                // die();
+                $upload_dir = __DIR__ . '/../../public/assets/img/bukti/';
+                $path = $upload_dir.$booking->bukti;
+                $filetype = filetype($path);
+                $filesize = filesize($path);
+                // header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+                // header('Content-Description: File Download');
+                header('Content-type: '.$filetype);
+                header('Content-length: ' . $filesize);
+                header('Content-Transfer-Encoding: binary');
+                header('Accept-Ranges: bytes');
+                header('Content-Disposition: attachment; filename="'.$booking->bukti.'"');
+                readfile($path);
+
+            }
+            else
+            {
+                return $this->response->redirect('surat/list');
+            }
+     }
 
 }   

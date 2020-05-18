@@ -215,6 +215,20 @@ $router->addGet('/tabelreservasiadmin', [
     'action' => 'tabelreservasiadmin'
 ]);
 
+$router->addGet('/listreservasi/detail/{id}', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'detailreservasi'
+]);
+
+$router->addGet('/download/{id}', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'download'
+]);
+
 
 
 return $router;
