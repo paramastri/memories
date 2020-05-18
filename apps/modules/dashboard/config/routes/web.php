@@ -172,4 +172,11 @@ $router->addPost('/storetambahreservasi',[
     'action' => 'storetambahreservasi'
 ]);
 
+$router->addGet('/listreservasisaya',[
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'listreservasisaya'
+]);
+
 return $router;
