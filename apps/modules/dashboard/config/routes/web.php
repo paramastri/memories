@@ -229,6 +229,13 @@ $router->addGet('/download/{id}', [
     'action' => 'download'
 ]);
 
+$router->addGet('/konfirmasi/{id}', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'konfirmasi'
+]);
+
 
 
 return $router;

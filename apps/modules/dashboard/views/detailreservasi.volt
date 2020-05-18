@@ -128,6 +128,7 @@
                                     <p style="font-weight: bold; margin-bottom: 0px;">Jam Selesai:<p> {{ data.jam_selesai }}<br>
                                     {% if ( data.bukti ) %}
                                     <p> <a href="/download/{{ data.id }}">download</a> </p>
+                                    <p> <a href="/konfirmasi/{{ data.id }}">konfirmasi</a> </p>
                                     {% else %}
                                     <p style="font-weight: bold; margin-bottom: 0px;">Belum Upload<p>
                                     {% endif %}

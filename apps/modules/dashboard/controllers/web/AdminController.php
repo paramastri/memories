@@ -322,4 +322,15 @@ class AdminController extends Controller
             }
      }
 
+    public function konfirmasiAction($id)
+    {
+        $booking = booking::findFirst("id='$id'");
+        if($booking){
+            $booking->status = 1;
+            $booking->save();
+            $this->response->redirect('listreservasi');
+        }
+        
+    }
+
 }   
