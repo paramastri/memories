@@ -318,7 +318,7 @@ class AdminController extends Controller
             }
             else
             {
-                return $this->response->redirect('surat/list');
+                return $this->response->redirect('listreservasi');
             }
      }
 
