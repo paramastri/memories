@@ -108,7 +108,7 @@
 
                             <div class="blog_details">
                                 <a class="d-inline-block">
-                                    <h2>{{ datas.harga }}</h2>
+                                    <h2>{{ datas.harga }} / jam</h2>
                                 </a>
                                 <p>{{ datas.deskripsi }}</p>
                                 <ul class="blog-info-link">
