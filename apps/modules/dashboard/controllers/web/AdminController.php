@@ -234,5 +234,49 @@ class AdminController extends Controller
         $this->view->pick('listreservasi');
      } 
 
+    public function tabelreservasiadminAction()
+    {   
+        $bookings = booking::find();
+        $data = array();
+
+        foreach ($bookings as $booking) {
+            $studio = studio::findFirst("id='$booking->id_studio'");
+
+            if($booking->sudah_bayar == 1)
+            {
+                $status = "Sudah";
+            }
+            else{
+                $status = "Belum";
+            }
+            if($booking->status == 1)
+            {
+                $konfirmasi = "Oke";
+            }
+            else{
+                $konfirmasi = "Belum Oke";
+            }
+            
+            
+            $data[] = array(
+                'link' => $booking->id,
+                'nama_studio' => $studio->nama,
+                'nama' => $booking->nama,
+                // 'no_hp' => $booking->no_hp,
+                'tanggal' => $booking->tanggal,
+                'jam_mulai' => $booking->jam_mulai,
+                'jam_selesai' => $booking->jam_selesai,
+                'selama' => $booking->selama,
+                'bayar' => $booking->bayar,
+                'sudah_bayar' => $status,
+                'status' => $booking->status,
+                'konfirmasi'=> $konfirmasi,
+            );
+        }
+        
+        $content = json_encode($data);
+        return $this->response->setContent($content);
+    } 
+
 
 }   

@@ -158,7 +158,7 @@
 
           <script>
               // tabelnya
-              
+
                   var table = new Tabulator("#example-table-theme", {
                       // height: "345px",
                       width: "300px",
@@ -172,10 +172,10 @@
             {title: "Atas Nama", field: "nama", headerFilter:"input"},
             {title: "Tanggal", field: "tanggal", headerFilter:"input"},
             {title: "Jam Mulai", field: "jam_mulai", headerFilter:"input"},
-            {title: "Jam Selesai", field: "jam_selesai", headerFilter:"input"},
             {title: "Durasi", field: "selama", headerFilter:"input"},
-            {title: "Bayar", field: "bayar", headerFilter:"input"},
-            {title: "Status Bayar", field: "sudah_bayar", headerFilter:"input"},
+            {title: "Total", field: "bayar", headerFilter:"input"},
+            {title: "Dibayar", field: "sudah_bayar", headerFilter:"input"},
+            {title: "Konfirmasi", field: "konfirmasi", headerFilter:"input"},
             {
                 title: "Batalkan Reservasi", field: "link", formatter: "link", formatterParams: {
                     labelField: "id",

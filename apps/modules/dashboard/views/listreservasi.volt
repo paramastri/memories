@@ -165,19 +165,27 @@
                       layout:"fitColumns",
                       placeholder: "Tidak Ada Data",
                       columns: [
-                          {title: "No", field: "no", formatter: "rownum", width: 10},
-                          {title: "Username", field: "username", headerFilter:"input"},
-                          {title: "Status Verifikasi", field: "status", headerFilter:"input"},
-                          {
-                              title: "Edit", field: "link", formatter: "link", formatterParams: {         
-                                  labelField: "name",
-                                  label: "Edit",
-                                  urlPrefix: "",
-                              }
-                          },
+            {title: "No", field: "no", formatter: "rownum", width: 10},
+            {title: "Nama Studio", field: "nama_studio", headerFilter:"input"},
+            {title: "Atas Nama", field: "nama", headerFilter:"input"},
+            {title: "Tanggal", field: "tanggal", headerFilter:"input"},
+            {title: "Jam Mulai", field: "jam_mulai", headerFilter:"input"},
+            {title: "Jam Selesai", field: "jam_selesai", headerFilter:"input"},
+            {title: "Durasi", field: "selama", headerFilter:"input"},
+            {title: "Total", field: "bayar", headerFilter:"input"},
+            {title: "Dibayar", field: "sudah_bayar", headerFilter:"input"},
+            {title: "Konfirmasi", field: "konfirmasi", headerFilter:"input"},
+            {
+                title: "Detail", field: "link", formatter: "link", formatterParams: {
+                    labelField: "id",
+                    label: "Detail",
+                    urlPrefix: "{{ url('listreservasi/detail/') }}",
+                    // target: "_blank",
+                }
+            },
                       ],
                   });
-                  table.setData("");
+                  table.setData("tabelreservasiadmin");
           </script>
 				
 					</div>

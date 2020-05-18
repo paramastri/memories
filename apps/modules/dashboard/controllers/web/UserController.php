@@ -217,6 +217,7 @@ class UserController extends Controller
         $booking->jam_selesai = $jam_selesai;
         $booking->selama = $selama;
         $booking->bayar = $bayar;
+        $booking->sudah_bayar = 0;
 
         $booking->save();
         $this->response->redirect('listreservasisaya');
@@ -275,6 +276,7 @@ class UserController extends Controller
         $img = $_FILES["file"]["name"];
         // echo $img;
         // die();
+        $booking->sudah_bayar = 1;
         $booking->bukti = $img;
         $booking->save();
         $this->response->redirect('reservasisaya/uploadbukti' . '/' . $id);
@@ -295,13 +297,21 @@ class UserController extends Controller
         foreach ($bookings as $booking) {
             $studio = studio::findFirst("id='$booking->id_studio'");
 
-            if($booking->sudah_bayar)
+            if($booking->sudah_bayar == 1)
             {
                 $status = "Sudah";
             }
             else{
                 $status = "Belum";
             }
+            if($booking->status == 1)
+            {
+                $konfirmasi = "Oke";
+            }
+            else{
+                $konfirmasi = "Belum Oke";
+            }
+            
             
             $data[] = array(
                 'link' => $booking->id,
@@ -315,12 +325,14 @@ class UserController extends Controller
                 'bayar' => $booking->bayar,
                 'sudah_bayar' => $status,
                 'status' => $booking->status,
+                'konfirmasi'=> $konfirmasi,
             );
         }
         
         $content = json_encode($data);
         return $this->response->setContent($content);
     } 
+
 
 
 

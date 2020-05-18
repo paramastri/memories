@@ -208,6 +208,13 @@ $router->addPost('/storeuploadbukti', [
     'action' => 'storeuploadbukti'
 ]);
 
+$router->addGet('/tabelreservasiadmin', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'admin',
+    'action' => 'tabelreservasiadmin'
+]);
+
 
 
 return $router;
