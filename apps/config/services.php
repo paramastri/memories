@@ -66,13 +66,13 @@ $di['dispatcher'] = function() use ($di, $defaultModule) {
     return $dispatcher;
 };
 
-$di['url'] = function() use ($config, $di) {
-	$url = new Url();
+// $di['url'] = function() use ($config, $di) {
+// 	$url = new Url();
 
-    $url->setBaseUri($config->url['baseUrl']);
+//     $url->setBaseUri($config->url['baseUrl']);
 
-	return $url;
-};
+// 	return $url;
+// };
 
 $di['voltService'] = function($view) use ($config) {
     $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $this);

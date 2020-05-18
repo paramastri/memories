@@ -199,9 +199,8 @@ class UserController extends Controller
         $studio = studio::findFirst("id='$jenis'");
         // var_dump($studio);
         // die();
-
+        $users = $this->request->getPost('id_users');
         $nama = $this->request->getPost('nama');
-        $no_hp = $this->request->getPost('no_hp');
         $tanggal = $this->request->getPost('tanggal');
         $jam_mulai = $this->request->getPost('jam_mulai');
         $jam_selesai = $this->request->getPost('jam_selesai');
@@ -211,8 +210,8 @@ class UserController extends Controller
         // die();
 
         $booking->id_studio = $jenis;
+        $booking->id_user = $users;
         $booking->nama = $nama;
-        $booking->no_hp =  $no_hp;
         $booking->tanggal = $tanggal;
         $booking->jam_mulai = $jam_mulai;
         $booking->jam_selesai = $jam_selesai;

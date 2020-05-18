@@ -132,6 +132,9 @@
                             </div>
                             </div>
 
+                    <input type="hidden" class="form-control" name="id_users"  value="{{ session.get('user')['id'] }}" />
+
+
                             <div class="mt-10">
                                 <input type="date" name="tanggal" placeholder="Tanggal"
                                     onfocus="this.placeholder = 'Tanggal'" onblur="this.placeholder = 'Tanggal'" required
