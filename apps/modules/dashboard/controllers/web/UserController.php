@@ -285,7 +285,11 @@ class UserController extends Controller
 
     public function tabelreservasisayaAction()
     {   
-        $bookings = booking::find();
+        $id = $this->session->get('user')['id'];
+        $bookings = booking::find([
+            "id_user='$id'",
+            'order' => 'id DESC'
+        ]);
         $data = array();
 
         foreach ($bookings as $booking) {
