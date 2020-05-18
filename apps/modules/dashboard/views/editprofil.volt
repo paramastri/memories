@@ -57,15 +57,15 @@
                                 <nav>
                                     <ul id="navigation">    
                                         <li><a style="color: #6A5E5E" href="/"> Home</a></li>
-                                        <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
-                                        <li><a style="color: #6A5E5E" href="tambahreservasi">Buat Reservasi</a></li>
-                                        <li><a style="color: #6A5E5E" href="listreservasisaya">Reservasi Saya</a></li>
+                                        <li><a style="color: #6A5E5E" href="{{ url('katalog') }}">Katalog</a></li>
+                                        <li><a style="color: #6A5E5E" href="{{ url('tambahreservasi') }}">Buat Reservasi</a></li>
+                                        <li><a style="color: #6A5E5E" href="{{ url('listreservasisaya') }}">Reservasi Saya</a></li>
                                         {% if (session.get('user')['username']) %}
                                         <li class="active"><a href="#">Hai, {{ session.get('user')['username'] }}!</a>
                                             <ul class="submenu">
                                                 {% endif %}
-                                                <li><a href="akunsaya">Akun Saya</a></li>
-                                                <li><a href="logoutuser">Logout</a></li>
+                                                <li><a href="{{ url('akunsaya') }}">Akun Saya</a></li>
+                                                <li><a href="{{ url('logoutuser') }}">Logout</a></li>
                                             </ul>
                                         </li>
                                     </ul>

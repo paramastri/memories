@@ -59,7 +59,6 @@ class UserController extends Controller
 
         $id = $this->request->getPost('id');
         $studio = users::findFirst("id = '$id'");
-        $smw = users::find();
         // var_dump($studio);
         // die();
         $nama = $this->request->getPost('nama');
@@ -67,12 +66,12 @@ class UserController extends Controller
         $telepon = $this->request->getPost('telepon');
        
 
-        
-            $studio->username = $username;
+       
             $studio->nama = $nama;
             $studio->email =  $email;
             $studio->telepon = $telepon;
-            
+            // var_dump($studio->nama);
+            // die();
             
             if($studio->update()){
                 // echo "berhasil update";
