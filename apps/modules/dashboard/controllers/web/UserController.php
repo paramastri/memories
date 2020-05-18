@@ -246,8 +246,11 @@ class UserController extends Controller
     public function uploadbuktiAction($id)
     {
         $booking = booking::findFirst("id='$id'");
+        $idstu = $booking->id_studio;
+        $studio = studio::findFirst("id='$idstu'");
         if($booking){
             $this->view->data=$booking;
+            $this->view->datas=$studio;
             $this->view->pick('uploadbukti');
         }
         

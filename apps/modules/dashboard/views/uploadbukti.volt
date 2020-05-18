@@ -57,15 +57,15 @@
                                 <nav>
                                     <ul id="navigation">    
                                         <li><a style="color: #6A5E5E" href="/"> Home</a></li>
-                                        <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
-                                        <li><a style="color: #6A5E5E" href="tambahreservasi">Buat Reservasi</a></li>
-                                        <li><a style="color: #6A5E5E" href="listreservasisaya">Reservasi Saya</a></li>
+                                        <li><a style="color: #6A5E5E" href="{{ url('katalog') }}">Katalog</a></li>
+                                        <li><a style="color: #6A5E5E" href="{{ url('tambahreservasi') }}">Buat Reservasi</a></li>
+                                        <li class="active"><a style="color: #6A5E5E" href="{{ url('listreservasisaya') }}">Reservasi Saya</a></li>
                                         {% if (session.get('user')['username']) %}
-                                        <li class="active"><a href="#">Hai, {{ session.get('user')['username'] }}!</a>
+                                        <li><a href="#">Hai, {{ session.get('user')['username'] }}!</a>
                                             <ul class="submenu">
                                                 {% endif %}
-                                                <li><a href="akunsaya">Akun Saya</a></li>
-                                                <li><a href="logoutuser">Logout</a></li>
+                                                <li><a href="{{ url('akunsaya') }}">Akun Saya</a></li>
+                                                <li><a href="{{ url('logoutuser') }}">Logout</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -113,13 +113,14 @@
                                 <div class="what-img">
                                         <img style="height: 20%; width: 20%;" src="assets/img/logo/logogo.png" alt="">
                                     </div>
-                                <a style="margin-top: 20px;" class="d-inline-block">
-                                    <h2>{{ data.nama }}</h2>
+                                <a  class="d-inline-block">
+                                    <h2>Upload Bukti Sewa</h2>
                                 </a>
-                                <p>{{ data.nama }}<br>
-                                    {{ data.tanggal }}<br>
-                                    {{ data.jam_mulai }}<br>
-                                    {{ data.jam_selesai }}<br>
+                                <p><p style="font-weight: bold; margin-bottom: 0px;">Atas nama:<p> {{ data.nama }}<br>
+                                    <p style="font-weight: bold; margin-bottom: 0px;">Studio:<p> {{ datas.nama }}<br>
+                                    <p style="font-weight: bold; margin-bottom: 0px;">Tanggal:<p> {{ data.tanggal }}<br>
+                                    <p style="font-weight: bold; margin-bottom: 0px;">Jam Mulai:<p> {{ data.jam_mulai }}<br>
+                                    <p style="font-weight: bold; margin-bottom: 0px;">Jam Selesai:<p> {{ data.jam_selesai }}<br>
                                 </p>
                         <form action="/storeuploadbukti" method = "post" enctype="multipart/form-data">
                             <input type="hidden" class="form-control" name="id_booking"  value = {{data.id}} />
