@@ -182,11 +182,11 @@ class UserController extends Controller
     public function tambahreservasiAction()
     {   
         $id = $this->session->get('user');
-        if ($id == NULL) {
-            // echo "berhasil login";
-            // die();
-            (new Response())->redirect('login')->send();          
-        }
+        // if ($id == NULL) {
+        //     // echo "berhasil login";
+        //     // die();
+        //     (new Response())->redirect('login')->send();          
+        // }
         $studio = studio::find();
         $this->view->data=$studio;
         $this->view->pick('tambahreservasi');
