@@ -57,8 +57,8 @@
                                 <nav>
                                     <ul id="navigation">    
                                         <li><a style="color: #6A5E5E" href="/">Home</a></li>
-                                        <li><a style="color: #6A5E5E" href="katalog">Katalog</a></li>
-                                        <li><a style="color: #6A5E5E" href="liststudio">Kelola Studio</a></li>
+                                        <li><a style="color: #6A5E5E" href="{{ url('katalog') }}">Katalog</a></li>
+                                        <li><a style="color: #6A5E5E" href="{{ url('liststudio') }}">Kelola Studio</a></li>
                                         <li class="active"><a style="color: #6A5E5E" href="/">Kelola Reservasi</a></li>
                                         {% if (session.get('admin')['username']) %}
                                         <li><a href="#">Hai, {{ session.get('admin')['username'] }}!</a>
