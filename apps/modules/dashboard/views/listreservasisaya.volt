@@ -158,6 +158,7 @@
 
           <script>
               // tabelnya
+              
                   var table = new Tabulator("#example-table-theme", {
                       // height: "345px",
                       width: "300px",
@@ -180,6 +181,14 @@
                     labelField: "id",
                     label: "Batalkan",
                     urlPrefix: "{{ url('reservasisaya/batalkan/') }}",
+                    // target: "_blank",
+                }
+            },
+            {
+                title: "Upload Bukti", field: "link", formatter: "link", formatterParams: {
+                    labelField: "id",
+                    label: "Upload",
+                    urlPrefix: "{{ url('reservasisaya/uploadbukti/') }}",
                     // target: "_blank",
                 }
             },

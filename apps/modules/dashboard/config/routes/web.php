@@ -194,5 +194,20 @@ $router->addGet('/reservasisaya/batalkan/{id}', [
     'action' => 'batalkanreservasi'
 ]);
 
+$router->addGet('/reservasisaya/uploadbukti/{id}', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'uploadbukti'
+]);
+
+$router->addPost('/storeuploadbukti', [
+    'namespace' => $namespace,
+    'module' => 'dashboard',
+    'controller' => 'user',
+    'action' => 'storeuploadbukti'
+]);
+
+
 
 return $router;

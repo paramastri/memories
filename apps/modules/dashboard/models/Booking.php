@@ -16,4 +16,6 @@ class Booking extends Model
     public $jam_selesai;
     public $selama;
     public $bayar;
+    public $bukti;
+
 }

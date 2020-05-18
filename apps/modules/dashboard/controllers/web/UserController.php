@@ -242,6 +242,44 @@ class UserController extends Controller
         }
         
     }
+
+    public function uploadbuktiAction($id)
+    {
+        $booking = booking::findFirst("id='$id'");
+        if($booking){
+            $this->view->data=$booking;
+            $this->view->pick('uploadbukti');
+        }
+        
+    }
+
+    public function storeuploadbuktiAction()
+    {
+        // echo "string";
+        // die();
+        $id = $this->request->getPost('id_booking');
+        // $ids = (int)$id;
+        // echo $id;
+        // die();
+        $booking = booking::findFirst("id='$id'");
+        // var_dump($booking);
+        // die();
+        if($booking){
+        $uploaddir1 = 'assets/img/bukti/';
+        $uploadfile1 = $uploaddir1 . basename($_FILES['file']['name']);
+
+    if (move_uploaded_file($_FILES["file"]["tmp_name"], $uploadfile1)) {
+        $img = $_FILES["file"]["name"];
+        // echo $img;
+        // die();
+        $booking->bukti = $img;
+        $booking->save();
+        $this->response->redirect('reservasisaya/uploadbukti' . '/' . $id);
+        }
+        
+        }
+    }
+
     public function tabelreservasisayaAction()
     {   
         $bookings = booking::find();
