@@ -126,8 +126,8 @@
                                     <p style="font-weight: bold; margin-bottom: 0px;">Tanggal:<p> {{ data.tanggal }}<br>
                                     <p style="font-weight: bold; margin-bottom: 0px;">Jam Mulai:<p> {{ data.jam_mulai }}<br>
                                     <p style="font-weight: bold; margin-bottom: 0px;">Jam Selesai:<p> {{ data.jam_selesai }}<br>
+                                    <img class="card-img rounded-0" src="../../assets/img/bukti/{{ data.bukti }}" alt="">
                                     {% if ( data.bukti ) %}
-                                    <p> <a href="/download/{{ data.id }}">download</a> </p>
                                     <p> <a href="/konfirmasi/{{ data.id }}">konfirmasi</a> </p>
                                     {% else %}
                                     <p style="font-weight: bold; margin-bottom: 0px;">Belum Upload<p>
